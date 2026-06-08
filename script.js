@@ -1,3 +1,20 @@
+
+// APARICIÓN LOGO
+
+window.addEventListener("load", () => {
+
+    const logo = document.querySelector(".logo-interactivo");
+
+    setTimeout(() => {
+
+        logo.style.transition = "all 1s ease";
+        logo.style.opacity = "1";
+        logo.style.transform = "translateY(0)";
+
+    }, 500);
+
+});
+
 // LOGO
 
 const letras = document.querySelectorAll('.fila img');
