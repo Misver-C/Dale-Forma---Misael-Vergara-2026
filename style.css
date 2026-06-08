@@ -111,25 +111,6 @@ body{
     
 }
 
-/* BOTÓN */
-
-.btn{
-    display:inline-block;
-    padding:15px 30px;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
-    border-radius:50px;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-    background-color:black;
-    color:white;
-}
-
 /* SECCIÓN CONSTRUYE */
 
 .construye h1{
@@ -141,6 +122,23 @@ body{
 
 .construye p{
     text-align:left;
+    padding: 0rem 15rem 15rem;
+    font-size:1.2rem;
+    line-height:1.6;
+    color:rgb(68, 52, 34);
+}
+
+/* Junta */
+
+.junta h1{
+    text-align:right;
+    padding: 2rem 15rem;
+    font-size:3rem;
+    color:rgb(68, 52, 34);
+}   
+
+.junta p{
+    text-align:right;
     padding: 0rem 15rem 15rem;
     font-size:1.2rem;
     line-height:1.6;
