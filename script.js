@@ -89,7 +89,7 @@ window.addEventListener("scroll", () => {
 
 // SUBTÍTULO INTERACTIVO
 
-const links = document.querySelectorAll(".word");
+const links = document.querySelectorAll(".subt");
 
 links.forEach(link => {
     link.addEventListener("click", (e) => {
