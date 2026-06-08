@@ -130,10 +130,30 @@ body{
     color:rgb(68, 52, 34);
 }
 
-.formas{
+.construye{
+    overflow:hidden;
+}
 
-    transform:scale(0.2);
+.formas-track{
+    display:flex;
+    align-items:center;
+    gap:40px;
 
+    width:max-content;
+
+    padding:0 0 3rem;
+
+    animation:moverFormas 20s linear infinite;
+}
+
+.formas-track:hover{
+    animation-play-state: paused;
+}
+
+.forma{
+    width:50px;
+    height:auto;
+    flex-shrink:0;
 }
 
 /* Junta */
@@ -281,6 +301,18 @@ body{
 
     .overlay h2{
         font-size:2rem;
+    }
+
+}
+
+@keyframes moverFormas{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
     }
 
 }
