@@ -58,13 +58,10 @@ window.addEventListener("scroll", () => {
 
     const scrollY = window.scrollY;
 
-    // rango total del efecto
     const maxScroll = 1200;
 
     let progress = scrollY / maxScroll;
 
-    // invertimos parte final para que "vuelvan"
-    // 0 → 1 → 0 (ida y vuelta)
     let phase = Math.sin(progress * Math.PI);
 
     letras.forEach((letra, i) => {

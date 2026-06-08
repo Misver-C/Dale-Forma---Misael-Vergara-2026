@@ -130,6 +130,12 @@ body{
     color:rgb(68, 52, 34);
 }
 
+.formas{
+
+    transform:scale(0.2);
+
+}
+
 /* Junta */
 
 .junta h1{
