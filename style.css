@@ -147,6 +147,23 @@ body{
     color:rgb(68, 52, 34);
 }
 
+/* Gana */
+
+.gana h1{
+    text-align:left;
+    padding: 2rem 15rem;
+    font-size:3rem;
+    color:rgb(68, 52, 34);
+}
+
+.gana p{
+    text-align:left;
+    padding: 0rem 15rem 15rem;
+    font-size:1.2rem;
+    line-height:1.6;
+    color:rgb(68, 52, 34);
+}
+
 /* PARALLAX */
 
 .parallax{
