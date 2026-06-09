@@ -104,6 +104,41 @@ links.forEach(link => {
     });
 });
 
+// FORMAS ANIMADAS
+
+const formas = document.querySelectorAll('.forma img');
+
+formas.forEach(forma => {
+
+    forma.addEventListener('mousemove', (e) => {
+
+        const rect = forma.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centroX = rect.width / 2;
+        const centroY = rect.height / 2;
+
+        const moverX = (x - centroX) * 0.15;
+        const moverY = (y - centroY) * 0.15;
+
+        forma.style.transform =
+            `translate(${moverX}px, ${moverY}px)
+            scale(1.2) rotate(${moverX * 0.5}deg)`;
+
+
+    });
+
+    forma.addEventListener('mouseleave', () => {
+
+        forma.style.transform =
+            'translate(0px, 0px)';
+
+    });
+
+});
+
 // PARALLAX
 
 const parallax = document.querySelector(".parallax");

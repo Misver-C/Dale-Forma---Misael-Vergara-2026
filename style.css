@@ -137,13 +137,11 @@ body{
 .formas-track{
     display:flex;
     align-items:center;
-    gap:40px;
+    gap:10px;
 
-    width:max-content;
+    width:length(4 * 80px + 3 * 10px); /* 4 formas de 80px y 3 espacios de 10px */
 
-    padding:0 0 3rem;
-
-    animation:moverFormas 20s linear infinite;
+    animation:moverFormas 10s linear infinite;
 }
 
 .formas-track:hover{
@@ -151,9 +149,14 @@ body{
 }
 
 .forma{
-    width:50px;
+    width:80px;
     height:auto;
     flex-shrink:0;
+}
+
+.forma:hover{
+    transform:scale(1.5) rotate(10deg);
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 /* Junta */
