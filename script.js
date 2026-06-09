@@ -106,7 +106,7 @@ links.forEach(link => {
 
 // FORMAS ANIMADAS
 
-const formas = document.querySelectorAll('.forma img');
+const formas = document.querySelectorAll('.forma');
 
 formas.forEach(forma => {
 
