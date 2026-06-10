@@ -61,14 +61,11 @@ body{
 }
 
 .fila img{
-    width:120px;
-    height:auto;
-    display:block;
-    transition:transform .3s ease;
-    cursor:pointer;
-
-    transition:transform 0.15s ease-out;
-    position:relative;
+    width: 130px; /* Antes 120px - ¡Ahora es más imponente! */
+    height: auto;
+    display: block;
+    cursor: pointer;
+    position: relative;
     will-change: transform;
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 }
@@ -80,18 +77,18 @@ body{
 /* Subtitulo interactivo */
 
 .hero h1{
-    font-size:2.6rem;
-    margin-top:20px;
-    margin-bottom:20px;
-    color:rgb(68, 52, 34);
+    font-size: 3.8rem; /* Antes 2.6rem */
+    margin-top: 35px;  /* Le damos un poquito más de aire respecto al logo */
+    margin-bottom: 20px;
+    color: rgb(68, 52, 34);
 }
 
 .titulo-interactivo{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-    font-size:2.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;         /* Un poco más de separación entre las palabras */
+    font-size: 3.8rem; /* Antes 2.6rem */
 }
 
 .subt{
@@ -116,23 +113,53 @@ body{
 
 /* SECCIÓN CONSTRUYE */
 
+.construye{
+    overflow:hidden;
+    padding-bottom: 8rem; /* Espacio antes de pasar a la siguiente sección */
+}
+
+.construye-contenedor {
+    display: flex;
+    align-items: center;        /* Centra verticalmente el texto con el GIF */
+    justify-content: space-between;
+    max-width: 1200px;          /* Limita el ancho máximo para que no se desarme en pantallas gigantes */
+    margin: 0 auto;             /* Centra todo el bloque en la pantalla */
+    padding: 4rem 2rem;         /* Reemplazamos los 15rem rígidos por un colchón más controlado */
+    gap: 70px;                  /* Espacio de separación entre el texto y el GIF */
+}
+
+.construye-texto {
+    flex: 1;                    /* Hace que el texto tome el espacio que le corresponde */
+}
+
 .construye h1{
-    text-align:left;
-    padding: 2rem 15rem;
-    font-size:3rem;
-    color:rgb(68, 52, 34);
+    text-align: left;
+    font-size: 3rem;
+    color: rgb(68, 52, 34);
+    margin-bottom: 1.5rem;      /* Separación entre el título y el párrafo */
 }   
 
 .construye p{
-    text-align:left;
-    padding: 0rem 15rem 15rem;
-    font-size:1.2rem;
-    line-height:1.6;
-    color:rgb(68, 52, 34);
+    text-align: left;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgb(68, 52, 34);
 }
 
-.construye{
-    overflow:hidden;
+/* El cuadro del GIF con sus curvas */
+.construye-gif {
+    flex: 1;
+    max-width: 450px;           /* Controla el tamaño máximo que puede alcanzar el GIF */
+    display: flex;
+    justify-content: center;
+}
+
+.construye-gif img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;        /* ¡Tus bordes curvos de 15px! */
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(68, 52, 34, 0.15); /* Una sombrita suave que combina con tus textos */
 }
 
 /* Formas en movimiento */
@@ -299,24 +326,46 @@ body{
     cursor:pointer;
 }
 
+/* Logo y subtitulo */
+
 @media(max-width:768px){
 
-    .hero h1{
-        font-size:2.5rem;
+   
+    .fila img {
+        width: 70px; 
+    }
+
+    .hero h1, .titulo-interactivo{
+        font-size: 2.2rem; 
     }
 
     .overlay h2{
-        font-size:2rem;
+        font-size: 2rem;
     }
 
+    .construye-contenedor {
+        flex-direction: column; /* En celulares, el GIF se acomodará abajo del texto */
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .construye h1, .construye p {
+        text-align: center;     /* Centramos los textos en pantallas pequeñas */
+    }
+    
+    .construye-gif {
+        max-width: 100%;       
+    }
 }
+
+/* Animación formas */
 
 @keyframes moverFormas{
     from{
         transform:translateX(0);
     }
     to{
-        /* 8 imágenes x (120px ancho + 10px gap) = 1040px exactos */
+        
         transform:translateX(-1040px); 
     }
 }
