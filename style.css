@@ -34,6 +34,8 @@ body{
     background-size: cover;
     background-position: center;
     margin-top: 80px;
+    position:relative;
+    overflow: hidden;
 }
 
 .hero-content{
@@ -66,7 +68,7 @@ body{
     width: 130px; 
     height: auto;
     display: block;
-    cursor: pointer;
+    cursor: default;
     position: relative;
     will-change: transform;
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
@@ -304,7 +306,7 @@ body{
     width: 176px;  
     height: 280px; 
     perspective: 1000px; 
-    cursor: pointer;
+    cursor: default;
 }
 
 /* El elemento que realmente gira */
@@ -327,6 +329,7 @@ body{
     width: 100%;
     height: 100%;
     position: absolute;
+    border-radius: 10px;
     top: 0;
     left: 0;
     overflow: hidden;
@@ -353,21 +356,6 @@ body{
 }
 
 /* Gana */
-
-.gana h1{
-    text-align:left;
-    padding: 2rem 15rem;
-    font-size:3rem;
-    color:rgb(68, 52, 34);
-}
-
-.gana p{
-    text-align:left;
-    padding: 0rem 15rem 15rem;
-    font-size:1.2rem;
-    line-height:1.6;
-    color:rgb(68, 52, 34);
-}
 
 /* RESPONSIVE */
 
@@ -431,5 +419,98 @@ body{
     .contenedor-carta-interactiva {
         width: 160px;
         height: 254px;
+    }
+}
+
+/*  BOTONES LATERALES DEL HERO */
+
+
+.btn-lateral {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    z-index: 10; 
+}
+
+
+.btn-izquierdo {
+    left: 50px; 
+}
+
+.btn-derecho {
+    right: 50px; 
+}
+
+
+.btn-texto {
+    font-family: 'Raleway', sans-serif;
+    color: rgb(68, 52, 34);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+    
+  
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; 
+}
+
+/* Contenedor de las imágenes (Controla el tamaño aquí) */
+.btn-img-contenedor {
+    position: relative;
+    width: 90px;  /* Ancho del botón */
+    height: 90px; /* Alto del botón */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estilo general para ambas imágenes */
+.btn-img-contenedor img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+/* Inicialmente ocultamos la versión hover */
+.btn-img-contenedor .img-hover {
+    opacity: 0;
+}
+
+/* =========================================
+   EFECTOS HOVER
+   ========================================= */
+
+/* 1. Agranda ligeramente el botón */
+.btn-lateral:hover .btn-img-contenedor {
+    transform: scale(1.15);
+}
+
+/* 2. Intercambio de imágenes */
+.btn-lateral:hover .img-normal {
+    opacity: 0;
+}
+.btn-lateral:hover .img-hover {
+    opacity: 1;
+}
+
+/* 3. Hace aparecer el texto deslizándose hacia arriba */
+.btn-lateral:hover .btn-texto {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE: En celulares los ocultamos para que no tapen el logo */
+@media(max-width: 900px) {
+    .btn-lateral {
+        display: none;
     }
 }

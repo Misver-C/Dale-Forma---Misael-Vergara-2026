@@ -9,6 +9,15 @@
 <body>
 
     <section class="hero">
+
+        <a href="https://exploracionpagedaleforma.com" class="btn-lateral btn-izquierdo">
+            <span class="btn-texto">Sitio Interactivo</span>
+            <div class="btn-img-contenedor">
+                <img src="assets/botones/izq.png" class="img-normal" alt="Botón Izquierdo">
+                <img src="assets/botones/izqhover.png" class="img-hover" alt="Botón Izquierdo Hover">
+            </div>
+        </a>
+
         <div class="hero-content">
 
             <div class="logo-interactivo">
@@ -34,6 +43,15 @@
             </h1>
 
         </div>
+
+        <a href="https://wiki.ead.pucv.cl/Dale_Forma" class="btn-lateral btn-derecho">
+            <span class="btn-texto">Wiki Casiopea</span>
+            <div class="btn-img-contenedor">
+                <img src="assets/botones/der.png" class="img-normal" alt="Botón Derecho">
+                <img src="assets/botones/derhover.png" class="img-hover" alt="Botón Derecho Hover">
+            </div>
+        </a>
+
     </section>
 
     <section id="intro" class="intro">
@@ -73,7 +91,7 @@
                     En este juego de construcción rápida, los jugadores utilizan las piezas del juego para construir figuras relacionadas al concepto de la ronda.
                     El objetivo es hacer las mejores construcciones para ganar fichas, juntar las cinco cartas Forma y así ganar el juego.
                 </p>
-
+            </div>
     </section>
 
     <section id="construye" class="construye">
@@ -157,12 +175,80 @@
 
     </section>
 
-    <section id="gana" class="gana">
-        <h1>¡Haz la palabra y gana!</h1>
-        <p>
-            Este mazo es clave para acercarte a la victoria. Al inicio de cada turno, puedes sacar una carta de este mazo a cambio de tres fichas.
-            En este mazo te puedes encontrar cartas de beneficio, negativas y de forma.
-        </p>
+    <section id="gana" class="construye">
+            <div class="construye-contenedor">
+            <div class="construye-texto">
+                <h1>¡Haz la palabra y gana!</h1>
+                <p>
+                    Dentro de las cartas especiales hay letras que hacen la palabra "FORMA". 
+                    ¡Sé el primero en juntar las cinco para ganar!
+                </p>
+            </div>
+            <div class="construye-gif">
+                <img src="assets/gana.gif" alt="Animación del juego">
+            </div>
+        </div>
+
+         <div class="fila-cartas">
+            
+            <div class="contenedor-carta-interactiva">
+                <div class="carta-flipper">
+                    <div class="carta-cara carta-frente">
+                        <img src="assets/cartas/esprev.png" alt="Carta 1">
+                    </div>
+                    <div class="carta-cara carta-reverso">
+                        <img src="assets/cartas/espf.png" alt="Reverso 1">
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor-carta-interactiva">
+                <div class="carta-flipper">
+                    <div class="carta-cara carta-frente">
+                        <img src="assets/cartas/esprev.png" alt="Carta 2">
+                    </div>
+                    <div class="carta-cara carta-reverso">
+                        <img src="assets/cartas/espo.png" alt="Reverso 2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor-carta-interactiva">
+                <div class="carta-flipper">
+                    <div class="carta-cara carta-frente">
+                        <img src="assets/cartas/esprev.png" alt="Carta 3">
+                    </div>
+                    <div class="carta-cara carta-reverso">
+                        <img src="assets/cartas/espr.png" alt="Reverso 3">
+                    </div>
+                </div>
+            </div>
+
+                        <div class="contenedor-carta-interactiva">
+                <div class="carta-flipper">
+                    <div class="carta-cara carta-frente">
+                        <img src="assets/cartas/esprev.png" alt="Carta 3">
+                    </div>
+                    <div class="carta-cara carta-reverso">
+                        <img src="assets/cartas/espm.png" alt="Reverso 3">
+                    </div>
+                </div>
+            </div>
+
+                        <div class="contenedor-carta-interactiva">
+                <div class="carta-flipper">
+                    <div class="carta-cara carta-frente">
+                        <img src="assets/cartas/esprev.png" alt="Carta 3">
+                    </div>
+                    <div class="carta-cara carta-reverso">
+                        <img src="assets/cartas/espa.png" alt="Reverso 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</section>
+
 
                 <div class="formas-track">
             <img src="assets/piezas/amar1.png" class="forma" alt="am1">
@@ -192,26 +278,6 @@
             <img src="assets/piezas/verde2.png" class="forma" alt="ve2">
             <img src="assets/piezas/azul2.png" class="forma" alt="az2"> 
         </div>
-    </section>
-
-    <section id="galeria" class="galeria">
-        <h2>Galería</h2>
-        <div class="grid">
-            <img src="assets/catapultazo.jpg" alt="">
-            <img src="assets/conectando.jpg" alt="">
-            <img src="assets/cuadriculando.png" alt="">
-            <img src="assets/daleforma.png" alt="">
-            <img src="assets/enlace.png" alt="">
-            <img src="assets/enrutate.png" alt="">
-            <img src="assets/polkup.png" alt="">
-            <img src="assets/zona.png" alt="">
-        </div>
-    </section>
-
-    <div class="lightbox" id="lightbox">
-        <span class="cerrar">&times;</span>
-        <img id="imagen-ampliada" src="" alt="">
-    </div>
 
     <script src="script.js"></script>
 </body>
