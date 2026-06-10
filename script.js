@@ -1,11 +1,10 @@
-// SECUENCIA DE APARICIÓN SEGURA: INTRO -> LOGO -> SUBTÍTULOS EN CASCADA
+// ANIMACIÖN LOGO Y SUBTÍTULO
 
 window.addEventListener("load", () => {
     const intro = document.getElementById("intro");
     const logo = document.querySelector(".logo-interactivo");
     const enlacesSubt = document.querySelectorAll('.subt');
     
-    // Función interna para hacer aparecer el logo y las anclas en cascada
     function activarEntrada() {
         if (logo) {
             logo.style.transition = "all 1s ease";
@@ -17,14 +16,12 @@ window.addEventListener("load", () => {
             enlacesSubt.forEach((enlace, index) => {
                 setTimeout(() => {
                     enlace.classList.add('aparecer');
-                }, 300 + (index * 250)); // 300ms tras el logo, 250ms entre palabras
+                }, 300 + (index * 250));
             });
         }
     }
 
-    // CONTROL DE TIEMPOS (Con o sin pantalla de introducción)
     if (intro) {
-        // Si la pantalla de intro existe en el HTML, hacemos la secuencia con retraso
         document.body.classList.add("bloquear-scroll");
 
         setTimeout(() => {
@@ -33,11 +30,10 @@ window.addEventListener("load", () => {
 
             setTimeout(() => {
                 activarEntrada();
-            }, 500); // Espera a que se desvanezca la intro
+            }, 1000);
 
-        }, 2000); // Duración de la intro
+        }, 2000);
     } else {
-        // Si NO tienes la pantalla de intro puesta, aparece todo directo sin trabarse
         activarEntrada();
     }
 });
@@ -47,14 +43,9 @@ window.addEventListener("load", () => {
 const letras = document.querySelectorAll('.fila img');
 
 letras.forEach(letra => {
-
     letra.addEventListener('mousemove', (e) => {
-
-        // Solo permitir movimiento de mouse si no están explotadas por scroll
-        if (window.scrollY < 50) { // Un pequeño umbral de scroll
-
+        if (window.scrollY < 50) {
             const rect = letra.getBoundingClientRect();
-
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
@@ -64,33 +55,23 @@ letras.forEach(letra => {
             const moverX = (x - centroX) * 0.15;
             const moverY = (y - centroY) * 0.15;
 
-            letra.style.transform =
-                `translate(${moverX}px, ${moverY}px)
-                scale(1.2) rotate(${moverX * 0.5}deg)`;
+            letra.style.transform = `translate(${moverX}px, ${moverY}px) scale(1.2) rotate(${moverX * 0.5}deg)`;
         }
-
     });
 
     letra.addEventListener('mouseleave', () => {
-
-        // Solo restablecer si no están explotadas por scroll
         if (window.scrollY < 50) {
-            letra.style.transform =
-                'translate(0px, 0px)';
+            letra.style.transform = 'translate(0px, 0px)';
         }
-
     });
-
 });
 
-//LOGO EFECTO 3D EXPLOSIVO AL SCROLL
+// LOGO - EFECTO 3D EXPLOSIVO AL SCROLL
 
-const logo = document.querySelector(".logo-interactivo");
 const letrasScroll = document.querySelectorAll('.fila img'); 
 
 window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
-
     const maxScroll = 400; 
     let progress = Math.max(0, scrollY / maxScroll); 
 
@@ -100,7 +81,6 @@ window.addEventListener("scroll", () => {
 
     letrasScroll.forEach((letra, i) => {
         const angle = (i / letrasScroll.length) * Math.PI * 2;
-
         const currentDistance = progress * maxDistancia;
         const currentScale = 1 + (progress * maxEscala);
         const currentOpacity = 1 - (progress * maxDesvanecimiento);
@@ -108,23 +88,21 @@ window.addEventListener("scroll", () => {
         letra.style.transform = `translate(${Math.cos(angle) * currentDistance}px, ${Math.sin(angle) * currentDistance}px) scale(${currentScale})`;
         letra.style.opacity = Math.max(0, currentOpacity); 
 
-        // NUEVO: Apagar la interacción del mouse si el usuario ya empezó a hacer scroll
         if (progress > 0.05) {
-            letra.style.pointerEvents = "none"; // El mouse atraviesa las letras invisibles
+            letra.style.pointerEvents = "none";
         } else {
-            letra.style.pointerEvents = "auto"; // Vuelven a ser interactivas al estar arriba
+            letra.style.pointerEvents = "auto";
         }
     });
 });
 
-// SUBTÍTULO INTERACTIVO
+// SUBTÍTULO INTERACTIVO (SMOOTH SCROLL)
 
 const links = document.querySelectorAll(".subt");
 
 links.forEach(link => {
     link.addEventListener("click", (e) => {
         e.preventDefault();
-
         const targetId = link.getAttribute("href");
         const target = document.querySelector(targetId);
 
@@ -137,16 +115,13 @@ links.forEach(link => {
     });
 });
 
-// FORMAS ANIMADAS
+// FORMAS ANIMADAS (INTERACCIÓN INDIVIDUAL)
 
 const formas = document.querySelectorAll('.forma');
 
 formas.forEach(forma => {
-
     forma.addEventListener('mousemove', (e) => {
-
         const rect = forma.getBoundingClientRect();
-
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
@@ -156,73 +131,34 @@ formas.forEach(forma => {
         const moverX = (x - centroX) * 0.15;
         const moverY = (y - centroY) * 0.15;
 
-        forma.style.transform =
-            `translate(${moverX}px, ${moverY}px)
-            scale(1.2) rotate(${moverX * 0.5}deg)`;
-
-
+        forma.style.transform = `translate(${moverX}px, ${moverY}px) scale(1.2) rotate(${moverX * 0.5}deg)`;
     });
 
     forma.addEventListener('mouseleave', () => {
-
-        forma.style.transform =
-            'translate(0px, 0px)';
-
+        forma.style.transform = 'translate(0px, 0px)';
     });
-
 });
 
-// PARALLAX
-
-const parallax = document.querySelector(".parallax");
-
-window.addEventListener("scroll", () => {
-
-    let desplazamiento = window.pageYOffset;
-
-    parallax.style.backgroundPositionY =
-        desplazamiento * 0.5 + "px";
-
-});
-
-
-// GALERÍA 
+// GALERÍA & LIGHTBOX
 
 const imagenes = document.querySelectorAll(".grid img");
 const lightbox = document.getElementById("lightbox");
-
-const imagenAmpliada =
-    document.getElementById("imagen-ampliada");
-
-const cerrar =
-    document.querySelector(".cerrar");
-
+const imagenAmpliada = document.getElementById("imagen-ampliada");
+const cerrar = document.querySelector(".cerrar");
 
 imagenes.forEach(imagen => {
-
     imagen.addEventListener("click", () => {
-
         lightbox.style.display = "flex";
         imagenAmpliada.src = imagen.src;
-
     });
-
 });
-
 
 cerrar.addEventListener("click", () => {
-
     lightbox.style.display = "none";
-
 });
 
-
 lightbox.addEventListener("click", (e) => {
-
     if(e.target === lightbox){
-
         lightbox.style.display = "none";
-
     }
-
 });

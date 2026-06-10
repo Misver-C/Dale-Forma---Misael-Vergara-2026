@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
     margin:0;
     padding:0;
@@ -61,7 +62,7 @@ body{
 }
 
 .fila img{
-    width: 130px; /* Antes 120px - ¡Ahora es más imponente! */
+    width: 130px; 
     height: auto;
     display: block;
     cursor: pointer;
@@ -77,9 +78,9 @@ body{
 /* Subtitulo interactivo */
 
 .hero h1{
-    font-size: 3.8rem; /* Antes 2.6rem */
-    margin-top: 35px;  /* Le damos un poquito más de aire respecto al logo */
-    margin-bottom: 20px;
+    font-size: 3.8rem; 
+    margin-top: 45px; 
+    margin-bottom: 10px;
     color: rgb(68, 52, 34);
 }
 
@@ -87,71 +88,57 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;         /* Un poco más de separación entre las palabras */
-    font-size: 3.8rem; /* Antes 2.6rem */
+    gap: 15px;
+    font-size: 3.8rem;
 }
 
 .subt{
     text-decoration:none;
     color:rgb(68, 52, 34);
     display:inline-block;
-    
-    /* Estado inicial: invisibles y un poco abajo */
     opacity: 0;
     transform: translateY(15px);
-    
-    /* Añadimos opacity y transform a la transición para la aparición */
     transition: transform 0.5s ease, opacity 0.5s ease, color 0.2s ease;
     will-change: transform, opacity;
 }
 
-/* Clase que añadirá JS en cascada */
 .subt.aparecer {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* El hover sigue funcionando igual, pero solo cuando ya aparecieron */
 .subt.aparecer:hover{
     transform: scale(1.2);
     color:#9c4e2a;
-    transition: transform 0.2s ease, color 0.2s ease; /* Transición más rápida para el mouse */
-}
-
-.hero p{
-    font-size:1.2rem;
-    margin-top: 30px;
-    margin-bottom:30px;
-    line-height:1.6;
-    
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 /* SECCIÓN CONSTRUYE */
 
 .construye{
     overflow:hidden;
-    padding-bottom: 8rem; /* Espacio antes de pasar a la siguiente sección */
+    padding-bottom: 8rem;
 }
 
 .construye-contenedor {
     display: flex;
-    align-items: center;        /* Centra verticalmente el texto con el GIF */
+    align-items: center;
     justify-content: space-between;
-    max-width: 1200px;          /* Limita el ancho máximo para que no se desarme en pantallas gigantes */
-    margin: 0 auto;             /* Centra todo el bloque en la pantalla */
-    padding: 4rem 2rem;         /* Reemplazamos los 15rem rígidos por un colchón más controlado */
-    gap: 70px;                  /* Espacio de separación entre el texto y el GIF */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    gap: 70px;
 }
 
 .construye-texto {
-    flex: 1;                    /* Hace que el texto tome el espacio que le corresponde */
+    flex: 1;
 }
 
 .construye h1{
     text-align: left;
     font-size: 3rem;
     color: rgb(68, 52, 34);
-    margin-bottom: 1.5rem;      /* Separación entre el título y el párrafo */
+    margin-bottom: 1.5rem;
 }   
 
 .construye p{
@@ -159,12 +146,13 @@ body{
     font-size: 1.2rem;
     line-height: 1.6;
     color: rgb(68, 52, 34);
+    flex: 1;
 }
 
-/* El cuadro del GIF con sus curvas */
+/* GIF */
 .construye-gif {
     flex: 1;
-    max-width: 700px;           /* Controla el tamaño máximo que puede alcanzar el GIF */
+    max-width: 700px;           
     display: flex;
     justify-content: center;
 }
@@ -172,9 +160,9 @@ body{
 .construye-gif img {
     width: 100%;
     height: auto;
-    border-radius: 15px;        /* ¡Tus bordes curvos de 15px! */
+    border-radius: 15px;        
     object-fit: cover;
-    box-shadow: 0 10px 30px rgba(68, 52, 34, 0.15); /* Una sombrita suave que combina con tus textos */
+    box-shadow: 0 10px 30px rgba(68, 52, 34, 0.15);
 }
 
 /* Formas en movimiento */
@@ -183,9 +171,7 @@ body{
     display:flex;
     align-items:center;
     gap:10px;
-    /* max-content permite que la caja se expanda a lo ancho de todas las imágenes juntas sin aplastarlas */
     width: max-content; 
-    /* Aumenté un poco el tiempo a 15s para que el movimiento de los 720px sea más fluido, pero puedes ajustarlo */
     animation:moverFormas 15s linear infinite; 
 }
 
@@ -197,13 +183,11 @@ body{
     width:120px;
     height:auto;
     flex-shrink:0;
-    /* Al ponerla aquí, la suavidad aplica tanto al ENTRAR como al SALIR */
     transition: transform 0.2s ease, color 0.2s ease; 
 }
 
 .forma:hover{
     transform:scale(1.5) rotate(10deg);
-    /* Borramos la transición de aquí adentro */
 }
 
 /* Junta */
@@ -238,49 +222,6 @@ body{
     font-size:1.2rem;
     line-height:1.6;
     color:rgb(68, 52, 34);
-}
-
-/* PARALLAX */
-
-.parallax{
-    height:80vh;
-    background-image:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600");
-    background-size:cover;
-    background-position:center;
-    position:relative;
-}
-
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.35);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.overlay h2{
-    color:white;
-    font-size:3rem;
-}
-
-/* CONTENIDO */
-
-.contenido{
-    max-width:900px;
-    margin:auto;
-    padding:80px 20px;
-    text-align:center;
-}
-
-.contenido h2{
-    margin-bottom:20px;
-    font-size:2.5rem;
-}
-
-.contenido p{
-    line-height:1.8;
-    font-size:1.1rem;
 }
 
 /* GALERÍA */
@@ -343,11 +284,9 @@ body{
     cursor:pointer;
 }
 
-/* Logo y subtitulo */
+/* RESPONSIVE */
 
 @media(max-width:768px){
-
-   
     .fila img {
         width: 70px; 
     }
@@ -356,18 +295,14 @@ body{
         font-size: 2.2rem; 
     }
 
-    .overlay h2{
-        font-size: 2rem;
-    }
-
     .construye-contenedor {
-        flex-direction: column; /* En celulares, el GIF se acomodará abajo del texto */
+        flex-direction: column;
         text-align: center;
         padding: 2rem 1rem;
     }
 
     .construye h1, .construye p {
-        text-align: center;     /* Centramos los textos en pantallas pequeñas */
+        text-align: center;
     }
     
     .construye-gif {
@@ -382,7 +317,6 @@ body{
         transform:translateX(0);
     }
     to{
-        
         transform:translateX(-1040px); 
     }
 }
