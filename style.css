@@ -163,7 +163,7 @@ body{
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 2rem 2rem;
     gap: 70px;
 }
 
@@ -231,31 +231,79 @@ body{
 
 /* Junta */
 
+.junta{
+    overflow:hidden;
+    padding-bottom: 8rem;
+}
+
+.junta-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    gap: 70px;
+}
+
+.junta-texto {
+    flex: 1;
+}
+
 .junta h1{
-    text-align:right;
-    padding: 2rem 15rem;
-    font-size:3rem;
-    color:rgb(68, 52, 34);
+    text-align: right;
+    font-size: 3rem;
+    color: rgb(68, 52, 34);
+    margin-bottom: 1.5rem;
 }   
 
 .junta p{
-    text-align:right;
-    padding: 0rem 15rem 15rem;
-    font-size:1.2rem;
-    line-height:1.6;
-    color:rgb(68, 52, 34);
+    text-align: right;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgb(68, 52, 34);
+    flex: 1;
+    font-weight: 500;
 }
 
+/* GIF */
+.junta-gif {
+    flex: 1;
+    max-width: 700px;           
+    display: flex;
+    justify-content: center;
+}
+
+.junta-gif img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;        
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(68, 52, 34, 0.15);
+}
+
+
 /* =========================================
-   EFECTO CARTA INTERACTIVA (3D FLIP + ZOOM)
+   CARTAS INTERACTIVAS
    ========================================= */
 
-/* Contenedor principal: Centra la carta y da Perspectiva 3D */
+.fila-cartas {
+    display: flex;
+    justify-content: center; /* Centra las 3 cartas horizontalmente */
+    align-items: center;
+    gap: 70px;               /* Espacio de separación entre las cartas */
+    flex-wrap: wrap;         /* Si la pantalla es chica, las cartas se acomodan abajo una de otra */
+    
+    /* CONTROL DE MARGENES AQUÍ: */
+    margin-top: 60px;        /* Espacio entre el texto de arriba y las cartas */
+    margin-bottom: 60px;     /* Espacio entre las cartas y lo que venga abajo */
+}
+
+/* Contenedor individual de cada carta (Sin márgenes propios ahora) */
 .contenedor-carta-interactiva {
-    width: 220px;  /* Ancho de la carta */
-    height: 350px; /* Alto de la carta */
-    perspective: 1000px; /* Importante: Da profundidad 3D al giro */
-    margin: 50px auto; /* Centra la carta horizontalmente y da margen arriba/abajo */
+    width: 176px;  
+    height: 280px; 
+    perspective: 1000px; 
     cursor: pointer;
 }
 
@@ -264,18 +312,17 @@ body{
     width: 100%;
     height: 100%;
     position: relative;
-    transform-style: preserve-3d; /* Permite que los hijos hijos mantengan posición 3D */
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Animación suave de giro */
+    transform-style: preserve-3d; 
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
     will-change: transform;
 }
 
-/* === ESTADO HOVER: Giro 180 grados Y Agrandado (scale) === */
+/* ESTADO HOVER: Giro Y Agrandado */
 .contenedor-carta-interactiva:hover .carta-flipper {
-    /* Gira sobre el eje Y y se agranda un 20% */
-    transform: rotateY(180deg) scale(1.2); 
+    transform: rotateY(180deg) scale(1.1); /* Bajé el zoom a 1.1 para que no se choquen entre sí al agrandarse */
 }
 
-/* Estilo común para ambas caras (frente y reverso) */
+/* Estilo común para ambas caras */
 .carta-cara {
     width: 100%;
     height: 100%;
@@ -283,28 +330,26 @@ body{
     top: 0;
     left: 0;
     overflow: hidden;
-    backface-visibility: hidden; /* Oculta la cara cuando está de espaldas */
-    box-shadow: 0 10px 25px rgba(68, 52, 34, 0.2); /* Sombrita suave estilo tus GIFs */
+    backface-visibility: hidden; 
+    box-shadow: 0 10px 25px rgba(68, 52, 34, 0.2); 
 }
 
-/* Asegura que la imagen ocupe todo el espacio de la cara */
 .carta-cara img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Mantiene proporción de la imagen */
+    object-fit: cover; 
     display: block;
 }
 
-/* Cara Frontal: Posición normal */
+/* Frente y Reverso */
 .carta-frente {
-    z-index: 2; /* Está por encima inicialmente */
+    z-index: 2; 
     transform: rotateY(0deg);
 }
 
-/* Cara Trasera: Ya empieza girada 180 grados */
 .carta-reverso {
-    background-color: #f5f5f5; /* Fondo por seguridad */
-    transform: rotateY(180deg); /* Está "boca abajo" esperando el giro */
+    background-color: #f5f5f5; 
+    transform: rotateY(180deg); 
 }
 
 /* Gana */
@@ -322,66 +367,6 @@ body{
     font-size:1.2rem;
     line-height:1.6;
     color:rgb(68, 52, 34);
-}
-
-/* GALERÍA */
-
-.galeria{
-    padding:80px 20px;
-}
-
-.galeria h2{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:2.5rem;
-}
-
-.grid{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:20px;
-}
-
-.grid img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:12px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.grid img:hover{
-    transform:scale(1.05);
-}
-
-/* LIGHTBOX */
-
-.lightbox{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.9);
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-}
-
-.lightbox img{
-    max-width:90%;
-    max-height:85%;
-    border-radius:10px;
-}
-
-.cerrar{
-    position:absolute;
-    top:20px;
-    right:40px;
-    color:white;
-    font-size:3rem;
-    cursor:pointer;
 }
 
 /* RESPONSIVE */
@@ -408,6 +393,21 @@ body{
     .construye-gif {
         max-width: 100%;       
     }
+
+        .junta-contenedor {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .junta h1, .junta p {
+        text-align: center;
+    }
+    
+    .junta-gif {
+        max-width: 100%;       
+    }
+
 }
 
 /* Animación formas */
@@ -423,9 +423,13 @@ body{
 
 /* Carta Interactiva */
 @media(max-width: 768px) {
-    .contenedor-carta-interactiva0 {
-        width: 180px;
-        height: 286px;
-        margin: 30px auto;
+    .fila-cartas {
+        gap: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .contenedor-carta-interactiva {
+        width: 160px;
+        height: 254px;
     }
 }
