@@ -1,4 +1,3 @@
-
 // APARICIÓN LOGO
 
 window.addEventListener("load", () => {
@@ -15,7 +14,7 @@ window.addEventListener("load", () => {
 
 });
 
-// LOGO
+// LOGO - EFECTO DE MOVIMIENTO DEL MOUSE
 
 const letras = document.querySelectorAll('.fila img');
 
@@ -23,65 +22,71 @@ letras.forEach(letra => {
 
     letra.addEventListener('mousemove', (e) => {
 
-        const rect = letra.getBoundingClientRect();
+        // Solo permitir movimiento de mouse si no están explotadas por scroll
+        if (window.scrollY < 50) { // Un pequeño umbral de scroll
 
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+            const rect = letra.getBoundingClientRect();
 
-        const centroX = rect.width / 2;
-        const centroY = rect.height / 2;
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-        const moverX = (x - centroX) * 0.15;
-        const moverY = (y - centroY) * 0.15;
+            const centroX = rect.width / 2;
+            const centroY = rect.height / 2;
 
-        letra.style.transform =
-            `translate(${moverX}px, ${moverY}px)
-            scale(1.2) rotate(${moverX * 0.5}deg)`;
+            const moverX = (x - centroX) * 0.15;
+            const moverY = (y - centroY) * 0.15;
 
+            letra.style.transform =
+                `translate(${moverX}px, ${moverY}px)
+                scale(1.2) rotate(${moverX * 0.5}deg)`;
+        }
 
     });
 
     letra.addEventListener('mouseleave', () => {
 
-        letra.style.transform =
-            'translate(0px, 0px)';
+        // Solo restablecer si no están explotadas por scroll
+        if (window.scrollY < 50) {
+            letra.style.transform =
+                'translate(0px, 0px)';
+        }
 
     });
 
 });
 
-//LOGO EFECTO 3D
+//LOGO EFECTO 3D EXPLOSIVO AL SCROLL
 
 const logo = document.querySelector(".logo-interactivo");
+const letrasScroll = document.querySelectorAll('.fila img'); 
 
 window.addEventListener("scroll", () => {
-
     const scrollY = window.scrollY;
 
-    const maxScroll = 1200;
+    const maxScroll = 400; 
+    let progress = Math.max(0, scrollY / maxScroll); 
 
-    let progress = scrollY / maxScroll;
+    const maxDistancia = 1500; 
+    const maxEscala = 8; 
+    const maxDesvanecimiento = 1.0; 
 
-    let phase = Math.sin(progress * Math.PI);
+    letrasScroll.forEach((letra, i) => {
+        const angle = (i / letrasScroll.length) * Math.PI * 2;
 
-    letras.forEach((letra, i) => {
+        const currentDistance = progress * maxDistancia;
+        const currentScale = 1 + (progress * maxEscala);
+        const currentOpacity = 1 - (progress * maxDesvanecimiento);
 
-        const angle = (i / letras.length) * Math.PI * 2;
+        letra.style.transform = `translate(${Math.cos(angle) * currentDistance}px, ${Math.sin(angle) * currentDistance}px) scale(${currentScale})`;
+        letra.style.opacity = Math.max(0, currentOpacity); 
 
-        const distance = 200 * phase;
-
-        const x = Math.cos(angle) * distance;
-        const y = Math.sin(angle) * distance;
-
-        const scale = 1 + (phase * 0.3);
-
-        letra.style.transform =
-            `translate(${x}px, ${y}px) scale(${scale})`;
-
-        letra.style.opacity = 1 - (phase * 0.2);
-
+        // NUEVO: Apagar la interacción del mouse si el usuario ya empezó a hacer scroll
+        if (progress > 0.05) {
+            letra.style.pointerEvents = "none"; // El mouse atraviesa las letras invisibles
+        } else {
+            letra.style.pointerEvents = "auto"; // Vuelven a ser interactivas al estar arriba
+        }
     });
-
 });
 
 // SUBTÍTULO INTERACTIVO

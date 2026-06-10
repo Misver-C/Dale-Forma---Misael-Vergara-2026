@@ -18,6 +18,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 /* HERO */
@@ -134,14 +135,16 @@ body{
     overflow:hidden;
 }
 
+/* Formas en movimiento */
+
 .formas-track{
     display:flex;
     align-items:center;
     gap:10px;
-
-    width:length(4 * 80px + 3 * 10px); /* 4 formas de 80px y 3 espacios de 10px */
-
-    animation:moverFormas 10s linear infinite;
+    /* max-content permite que la caja se expanda a lo ancho de todas las imágenes juntas sin aplastarlas */
+    width: max-content; 
+    /* Aumenté un poco el tiempo a 15s para que el movimiento de los 720px sea más fluido, pero puedes ajustarlo */
+    animation:moverFormas 15s linear infinite; 
 }
 
 .formas-track:hover{
@@ -149,7 +152,7 @@ body{
 }
 
 .forma{
-    width:80px;
+    width:120px;
     height:auto;
     flex-shrink:0;
 }
@@ -309,13 +312,11 @@ body{
 }
 
 @keyframes moverFormas{
-
     from{
         transform:translateX(0);
     }
-
     to{
-        transform:translateX(-50%);
+        /* 8 imágenes x (120px ancho + 10px gap) = 1040px exactos */
+        transform:translateX(-1040px); 
     }
-
 }
