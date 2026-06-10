@@ -117,7 +117,7 @@ body{
 /* SECCIÓN INTRO */
 
 .intro{
-    padding: 4rem 2rem;
+    padding: 4rem 11rem;
 }
 
 .intro-contenedor {
@@ -246,6 +246,67 @@ body{
     color:rgb(68, 52, 34);
 }
 
+/* =========================================
+   EFECTO CARTA INTERACTIVA (3D FLIP + ZOOM)
+   ========================================= */
+
+/* Contenedor principal: Centra la carta y da Perspectiva 3D */
+.contenedor-carta-interactiva {
+    width: 220px;  /* Ancho de la carta */
+    height: 350px; /* Alto de la carta */
+    perspective: 1000px; /* Importante: Da profundidad 3D al giro */
+    margin: 50px auto; /* Centra la carta horizontalmente y da margen arriba/abajo */
+    cursor: pointer;
+}
+
+/* El elemento que realmente gira */
+.carta-flipper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d; /* Permite que los hijos hijos mantengan posición 3D */
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Animación suave de giro */
+    will-change: transform;
+}
+
+/* === ESTADO HOVER: Giro 180 grados Y Agrandado (scale) === */
+.contenedor-carta-interactiva:hover .carta-flipper {
+    /* Gira sobre el eje Y y se agranda un 20% */
+    transform: rotateY(180deg) scale(1.2); 
+}
+
+/* Estilo común para ambas caras (frente y reverso) */
+.carta-cara {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    backface-visibility: hidden; /* Oculta la cara cuando está de espaldas */
+    box-shadow: 0 10px 25px rgba(68, 52, 34, 0.2); /* Sombrita suave estilo tus GIFs */
+}
+
+/* Asegura que la imagen ocupe todo el espacio de la cara */
+.carta-cara img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene proporción de la imagen */
+    display: block;
+}
+
+/* Cara Frontal: Posición normal */
+.carta-frente {
+    z-index: 2; /* Está por encima inicialmente */
+    transform: rotateY(0deg);
+}
+
+/* Cara Trasera: Ya empieza girada 180 grados */
+.carta-reverso {
+    background-color: #f5f5f5; /* Fondo por seguridad */
+    transform: rotateY(180deg); /* Está "boca abajo" esperando el giro */
+}
+
 /* Gana */
 
 .gana h1{
@@ -357,5 +418,14 @@ body{
     }
     to{
         transform:translateX(-1040px); 
+    }
+}
+
+/* Carta Interactiva */
+@media(max-width: 768px) {
+    .contenedor-carta-interactiva0 {
+        width: 180px;
+        height: 286px;
+        margin: 30px auto;
     }
 }
