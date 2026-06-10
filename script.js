@@ -1,17 +1,45 @@
-// APARICIÓN LOGO
+// SECUENCIA DE APARICIÓN SEGURA: INTRO -> LOGO -> SUBTÍTULOS EN CASCADA
 
 window.addEventListener("load", () => {
-
+    const intro = document.getElementById("intro");
     const logo = document.querySelector(".logo-interactivo");
+    const enlacesSubt = document.querySelectorAll('.subt');
+    
+    // Función interna para hacer aparecer el logo y las anclas en cascada
+    function activarEntrada() {
+        if (logo) {
+            logo.style.transition = "all 1s ease";
+            logo.style.opacity = "1";
+            logo.style.transform = "translateY(0)";
+        }
+        
+        if (enlacesSubt.length > 0) {
+            enlacesSubt.forEach((enlace, index) => {
+                setTimeout(() => {
+                    enlace.classList.add('aparecer');
+                }, 300 + (index * 250)); // 300ms tras el logo, 250ms entre palabras
+            });
+        }
+    }
 
-    setTimeout(() => {
+    // CONTROL DE TIEMPOS (Con o sin pantalla de introducción)
+    if (intro) {
+        // Si la pantalla de intro existe en el HTML, hacemos la secuencia con retraso
+        document.body.classList.add("bloquear-scroll");
 
-        logo.style.transition = "all 1s ease";
-        logo.style.opacity = "1";
-        logo.style.transform = "translateY(0)";
+        setTimeout(() => {
+            intro.classList.add("oculto");
+            document.body.classList.remove("bloquear-scroll");
 
-    }, 500);
+            setTimeout(() => {
+                activarEntrada();
+            }, 500); // Espera a que se desvanezca la intro
 
+        }, 2000); // Duración de la intro
+    } else {
+        // Si NO tienes la pantalla de intro puesta, aparece todo directo sin trabarse
+        activarEntrada();
+    }
 });
 
 // LOGO - EFECTO DE MOVIMIENTO DEL MOUSE

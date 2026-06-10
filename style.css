@@ -94,13 +94,28 @@ body{
 .subt{
     text-decoration:none;
     color:rgb(68, 52, 34);
-    transition: transform 0.2s ease, color 0.2s ease;
     display:inline-block;
+    
+    /* Estado inicial: invisibles y un poco abajo */
+    opacity: 0;
+    transform: translateY(15px);
+    
+    /* Añadimos opacity y transform a la transición para la aparición */
+    transition: transform 0.5s ease, opacity 0.5s ease, color 0.2s ease;
+    will-change: transform, opacity;
 }
 
-.subt:hover{
+/* Clase que añadirá JS en cascada */
+.subt.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* El hover sigue funcionando igual, pero solo cuando ya aparecieron */
+.subt.aparecer:hover{
     transform: scale(1.2);
     color:#9c4e2a;
+    transition: transform 0.2s ease, color 0.2s ease; /* Transición más rápida para el mouse */
 }
 
 .hero p{
@@ -182,11 +197,13 @@ body{
     width:120px;
     height:auto;
     flex-shrink:0;
+    /* Al ponerla aquí, la suavidad aplica tanto al ENTRAR como al SALIR */
+    transition: transform 0.2s ease, color 0.2s ease; 
 }
 
 .forma:hover{
     transform:scale(1.5) rotate(10deg);
-    transition: transform 0.2s ease, color 0.2s ease;
+    /* Borramos la transición de aquí adentro */
 }
 
 /* Junta */
