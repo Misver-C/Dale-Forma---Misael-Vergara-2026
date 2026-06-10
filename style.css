@@ -25,7 +25,7 @@ body{
 /* HERO */
 
 .hero{
-    height:100vh;
+    height:75vh;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -33,6 +33,7 @@ body{
     color:black;
     background-size: cover;
     background-position: center;
+    margin-top: 80px;
 }
 
 .hero-content{
@@ -113,6 +114,42 @@ body{
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
+/* SECCIÓN INTRO */
+
+.intro{
+    padding: 4rem 2rem;
+}
+
+.intro-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    gap: 70px;
+}
+
+.intro-texto {
+    flex: 1;
+}
+
+.intro h1{
+    text-align: center;
+    font-size: 3rem;
+    color: rgb(68, 52, 34);
+    margin-bottom: 1.5rem;
+}   
+
+.intro p{
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgb(68, 52, 34);
+    flex: 1;
+    font-weight: 500;
+}
+
 /* SECCIÓN CONSTRUYE */
 
 .construye{
@@ -147,6 +184,7 @@ body{
     line-height: 1.6;
     color: rgb(68, 52, 34);
     flex: 1;
+    font-weight: 500;
 }
 
 /* GIF */
@@ -173,6 +211,7 @@ body{
     gap:10px;
     width: max-content; 
     animation:moverFormas 15s linear infinite; 
+    margin-bottom: 7rem;
 }
 
 .formas-track:hover{
