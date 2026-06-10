@@ -149,7 +149,7 @@ body{
 /* El cuadro del GIF con sus curvas */
 .construye-gif {
     flex: 1;
-    max-width: 450px;           /* Controla el tamaño máximo que puede alcanzar el GIF */
+    max-width: 700px;           /* Controla el tamaño máximo que puede alcanzar el GIF */
     display: flex;
     justify-content: center;
 }
