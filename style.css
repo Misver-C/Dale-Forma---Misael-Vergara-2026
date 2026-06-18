@@ -1,19 +1,20 @@
+CSS
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
 }
 
 body{
-    font-family:'Raleway', sans-serif;
-    background:#f5f5f5;
-    color:#333;
+    font-family: 'Raleway', sans-serif;
+    background: #f5f5f5;
+    color: #333;
     background-image: url("assets/logo/paleta_1.png");
     background-size: cover;
     background-position: center;
@@ -22,68 +23,133 @@ body{
     overflow-x: hidden;
 }
 
-/* HERO */
+/* ===================================================
+   COMPONENTE: PANTALLA DE INTRODUCCIÓN
+   =================================================== */
 
-.hero{
-    height:75vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:black;
-    background-size: cover;
-    background-position: center;
-    margin-top: 80px;
-    position:relative;
+.pantalla-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: circle(100% at 50% 50%);
+    transition: clip-path 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+    will-change: clip-path;
+}
+
+.pantalla-intro.transicion-activa {
+    clip-path: circle(0% at 50% 50%);
+}
+
+.intro-ventana-oculta {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.intro-bloque-imagenes {
+    display: flex;
+    gap: 1em; /* 16px */
+}
+
+.intro-img {
+    width: 12em; /* Mantenido en em según tu última versión */
+    height: 12em;
+    object-fit: contain;
+    transform: translateY(100%);
+    animation: emergerImagenes 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.intro-img.img-1 { animation-delay: 0.1s; }
+.intro-img.img-2 { animation-delay: 0.3s; }
+.intro-img.img-3 { animation-delay: 0.5s; }
+.intro-img.img-4 { animation-delay: 0.7s; }
+
+@keyframes emergerImagenes {
+    to { transform: translateY(0); }
+}
+
+body.bloquear-scroll {
     overflow: hidden;
 }
 
-.hero-content{
-    max-width:900px;
-    padding:20px;
+/* =========================================
+   HERO & ANCLAJE GEOMÉTRICO
+   ========================================= */
+
+.hero {
+    height: 75vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    text-align: center;
+    color: black;
+    background-size: cover;
+    background-position: center;
+    margin-top: 5em; /* 80px / 16 */
+    position: relative;
+    overflow: visible; 
 }
 
-/* LOGO INTERACTIVO */
+.hero-content {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
 
-.logo-interactivo{
+.logo-interactivo {
     opacity: 0;
-    transform: translateY(20px);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-    position:relative;
-    perspective: 1000px;
+    transform: translateY(1.25em); /* 20px / 16 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625em; /* 10px / 16 */
+    position: relative;
+    perspective: 62.5em; /* 1000px / 16 */
+    width: max-content;
+    margin: 0 auto;
+    overflow: visible;
 }
 
-.fila{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:0px;
+.fila {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0em;
     transform-style: preserve-3d;
+    width: max-content;
 }
 
-.fila img{
-    width: 130px; 
+.fila img {
+    width: 8.125em; /* 130px / 16 */
     height: auto;
     display: block;
     cursor: default;
     position: relative;
     will-change: transform;
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    transform-origin: center center; 
 }
 
-.fila img:hover{
-    transform:scale(2) rotate(-3deg);
-}
-
-/* Subtitulo interactivo */
+/* =========================================
+   SUBTÍTULO INTERACTIVO
+   ========================================= */
 
 .hero h1{
-    font-size: 3.8rem; 
-    margin-top: 45px; 
-    margin-bottom: 10px;
+    font-size: 3.8rem; /* Respetando rem para escalado de fuentes globales */
+    margin-top: 1.5em; /* 45px / 16 */
+    margin-bottom: 0.625em; /* 10px / 16 */
     color: rgb(68, 52, 34);
 }
 
@@ -91,16 +157,36 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 0.9375em; /* 15px / 16 */
     font-size: 3.8rem;
 }
 
+.titulo-interactivo.fijo {
+    position: fixed;
+    top: 1.25em;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(245, 245, 245, 0.85);
+    padding: 0.5em 1.5em;
+    border-radius: 2em;
+    backdrop-filter: blur(0.5em); /* 8px / 16 */
+    box-shadow: 0 0.625em 1.875em rgba(68, 52, 34, 0.08); /* 10px y 30px */
+    width: max-content;
+    margin-top: 0;
+}
+
+.titulo-interactivo.fijo .subt {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .subt{
-    text-decoration:none;
-    color:rgb(68, 52, 34);
-    display:inline-block;
+    text-decoration: none;
+    color: rgb(68, 52, 34);
+    display: inline-block;
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(0.9375em); /* 15px / 16 */
     transition: transform 0.5s ease, opacity 0.5s ease, color 0.2s ease;
     will-change: transform, opacity;
 }
@@ -112,24 +198,26 @@ body{
 
 .subt.aparecer:hover{
     transform: scale(1.2);
-    color:#9c4e2a;
+    color: #9c4e2a;
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
-/* SECCIÓN INTRO */
+/* =========================================
+   SECCIÓN INTRO
+   ========================================= */
 
 .intro{
-    padding: 4rem 11rem;
+    padding: 4rem 11rem; /* Mantenidos en rem por consistencia de layouts de sección */
 }
 
 .intro-contenedor {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 75em; /* 1200px / 16 */
     margin: 0 auto;
     padding: 4rem 2rem;
-    gap: 70px;
+    gap: 4.375em; /* 70px / 16 */
 }
 
 .intro-texto {
@@ -152,10 +240,12 @@ body{
     font-weight: 500;
 }
 
-/* SECCIÓN CONSTRUYE */
+/* =========================================
+   SECCIÓN CONSTRUYE
+   ========================================= */
 
 .construye{
-    overflow:hidden;
+    overflow: hidden;
     padding-bottom: 8rem;
 }
 
@@ -163,10 +253,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 75em; /* 1200px / 16 */
     margin: 0 auto;
     padding: 2rem 2rem;
-    gap: 70px;
+    gap: 4.375em; /* 70px / 16 */
 }
 
 .construye-texto {
@@ -189,10 +279,9 @@ body{
     font-weight: 500;
 }
 
-/* GIF */
 .construye-gif {
     flex: 1;
-    max-width: 700px;           
+    max-width: 43.75em; /* 700px / 16 */
     display: flex;
     justify-content: center;
 }
@@ -200,19 +289,21 @@ body{
 .construye-gif img {
     width: 100%;
     height: auto;
-    border-radius: 15px;        
+    border-radius: 0.9375em; /* 15px / 16 */
     object-fit: cover;
-    box-shadow: 0 10px 30px rgba(68, 52, 34, 0.15);
+    box-shadow: 0 0.625em 1.875em rgba(68, 52, 34, 0.15); /* 10px y 30px */
 }
 
-/* Formas en movimiento */
+/* =========================================
+   TRACK DE FORMAS EN MOVIMIENTO
+   ========================================= */
 
 .formas-track{
-    display:flex;
-    align-items:center;
-    gap:10px;
+    display: flex;
+    align-items: center;
+    gap: 0.625em; /* 10px / 16 */
     width: max-content; 
-    animation:moverFormas 15s linear infinite; 
+    animation: moverFormas 15s linear infinite; 
     margin-bottom: 7rem;
 }
 
@@ -221,20 +312,22 @@ body{
 }
 
 .forma{
-    width:120px;
-    height:auto;
-    flex-shrink:0;
+    width: 7.5em; /* 120px / 16 */
+    height: auto;
+    flex-shrink: 0;
     transition: transform 0.2s ease, color 0.2s ease; 
 }
 
 .forma:hover{
-    transform:scale(1.5) rotate(10deg);
+    transform: scale(1.5) rotate(10deg);
 }
 
-/* Junta */
+/* =========================================
+   SECCIÓN JUNTA
+   ========================================= */
 
 .junta{
-    overflow:hidden;
+    overflow: hidden;
     padding-bottom: 8rem;
 }
 
@@ -242,10 +335,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 75em; /* 1200px / 16 */
     margin: 0 auto;
     padding: 4rem 2rem;
-    gap: 70px;
+    gap: 4.375em; /* 70px / 16 */
 }
 
 .junta-texto {
@@ -268,10 +361,9 @@ body{
     font-weight: 500;
 }
 
-/* GIF */
 .junta-gif {
     flex: 1;
-    max-width: 700px;           
+    max-width: 43.75em; /* 700px / 16 */
     display: flex;
     justify-content: center;
 }
@@ -279,37 +371,32 @@ body{
 .junta-gif img {
     width: 100%;
     height: auto;
-    border-radius: 15px;        
+    border-radius: 0.9375em; /* 15px / 16 */
     object-fit: cover;
-    box-shadow: 0 10px 30px rgba(68, 52, 34, 0.15);
+    box-shadow: 0 0.625em 1.875em rgba(68, 52, 34, 0.15);
 }
 
-
 /* =========================================
-   CARTAS INTERACTIVAS
+   MÓDULO: CARTAS INTERACTIVAS
    ========================================= */
 
 .fila-cartas {
     display: flex;
-    justify-content: center; /* Centra las 3 cartas horizontalmente */
+    justify-content: center;
     align-items: center;
-    gap: 70px;               /* Espacio de separación entre las cartas */
-    flex-wrap: wrap;         /* Si la pantalla es chica, las cartas se acomodan abajo una de otra */
-    
-    /* CONTROL DE MARGENES AQUÍ: */
-    margin-top: 60px;        /* Espacio entre el texto de arriba y las cartas */
-    margin-bottom: 60px;     /* Espacio entre las cartas y lo que venga abajo */
+    gap: 4.375em; /* 70px / 16 */
+    flex-wrap: wrap; 
+    margin-top: 3.75em; /* 60px / 16 */
+    margin-bottom: 3.75em; /* 60px / 16 */
 }
 
-/* Contenedor individual de cada carta (Sin márgenes propios ahora) */
 .contenedor-carta-interactiva {
-    width: 176px;  
-    height: 280px; 
-    perspective: 1000px; 
+    width: 11em;  /* 176px / 16 */
+    height: 17.5em; /* 280px / 16 */
+    perspective: 62.5em; /* 1000px / 16 */
     cursor: default;
 }
 
-/* El elemento que realmente gira */
 .carta-flipper {
     width: 100%;
     height: 100%;
@@ -319,22 +406,20 @@ body{
     will-change: transform;
 }
 
-/* ESTADO HOVER: Giro Y Agrandado */
 .contenedor-carta-interactiva:hover .carta-flipper {
-    transform: rotateY(180deg) scale(1.1); /* Bajé el zoom a 1.1 para que no se choquen entre sí al agrandarse */
+    transform: rotateY(180deg) scale(1.1);
 }
 
-/* Estilo común para ambas caras */
 .carta-cara {
     width: 100%;
     height: 100%;
     position: absolute;
-    border-radius: 10px;
+    border-radius: 0.625em; /* 10px / 16 */
     top: 0;
     left: 0;
     overflow: hidden;
     backface-visibility: hidden; 
-    box-shadow: 0 10px 25px rgba(68, 52, 34, 0.2); 
+    box-shadow: 0 0.625em 1.5625em rgba(68, 52, 34, 0.2); /* 10px y 25px */
 }
 
 .carta-cara img {
@@ -344,7 +429,6 @@ body{
     display: block;
 }
 
-/* Frente y Reverso */
 .carta-frente {
     z-index: 2; 
     transform: rotateY(0deg);
@@ -355,146 +439,27 @@ body{
     transform: rotateY(180deg); 
 }
 
-/* Gana */
+/* =========================================
+   SECCIÓN GANA & VISTAS AUXILIARES
+   ========================================= */
 
-/* RESPONSIVE */
-
-@media(max-width:768px){
-    .fila img {
-        width: 70px; 
-    }
-
-    .hero h1, .titulo-interactivo{
-        font-size: 2.2rem; 
-    }
-
-    .construye-contenedor {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 1rem;
-    }
-
-    .construye h1, .construye p {
-        text-align: center;
-    }
-    
-    .construye-gif {
-        max-width: 100%;       
-    }
-
-        .junta-contenedor {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 1rem;
-    }
-
-    .junta h1, .junta p {
-        text-align: center;
-    }
-    
-    .junta-gif {
-        max-width: 100%;       
-    }
-
+.gana {
+    overflow: hidden;
+    padding-bottom: 8rem;
 }
 
-/* Animación formas */
-
-@keyframes moverFormas{
-    from{
-        transform:translateX(0);
-    }
-    to{
-        transform:translateX(-1040px); 
-    }
-}
-
-/* Carta Interactiva */
-@media(max-width: 768px) {
-    .fila-cartas {
-        gap: 20px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-    .contenedor-carta-interactiva {
-        width: 160px;
-        height: 254px;
-    }
-}
-
-/*  BOTONES LATERALES DEL HERO */
-
-
-.btn-lateral {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    z-index: 10; 
-}
-
-
-.btn-izquierdo {
-    left: 50px; 
-}
-
-.btn-derecho {
-    right: 50px; 
-}
-
-
-.btn-texto {
-    font-family: 'Raleway', sans-serif;
-    color: rgb(68, 52, 34);
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 12px;
-    white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
-    
-  
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none; 
-}
-
-/* Contenedor de las imágenes (Controla el tamaño aquí) */
-.btn-img-contenedor {
-    position: relative;
-    width: 90px;  /* Ancho del botón */
-    height: 90px; /* Alto del botón */
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Estilo general para ambas imágenes */
-.btn-img-contenedor img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: opacity 0.3s ease;
-}
-
-/* Inicialmente ocultamos la versión hover */
-.btn-img-contenedor .img-hover {
-    opacity: 0;
+.fundamento {
+    height: auto;
 }
 
 /* =========================================
-   EFECTOS HOVER
+   EFECTOS HOVER COMPLEMENTARIOS
    ========================================= */
 
-/* 1. Agranda ligeramente el botón */
 .btn-lateral:hover .btn-img-contenedor {
     transform: scale(1.15);
 }
 
-/* 2. Intercambio de imágenes */
 .btn-lateral:hover .img-normal {
     opacity: 0;
 }
@@ -502,15 +467,65 @@ body{
     opacity: 1;
 }
 
-/* 3. Hace aparecer el texto deslizándose hacia arriba */
 .btn-lateral:hover .btn-texto {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* RESPONSIVE: En celulares los ocultamos para que no tapen el logo */
-@media(max-width: 900px) {
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE IN EM)
+   ========================================= */
+
+@media(max-width: 48em){ /* 768px / 16 */
+    .fila img {
+        width: 4.375em; /* 70px / 16 */
+    }
+
+    .hero h1, .titulo-interactivo{
+        font-size: 2.2rem; 
+    }
+
+    .construye-contenedor, .junta-contenedor {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .construye h1, .construye p, .junta h1, .junta p {
+        text-align: center;
+    }
+    
+    .construye-gif, .junta-gif {
+        max-width: 100%;       
+    }
+
+    .fila-cartas {
+        gap: 1.25em; /* 20px / 16 */
+        margin-top: 1.875em; /* 30px / 16 */
+        margin-bottom: 1.875em;
+    }
+    
+    .contenedor-carta-interactiva {
+        width: 10em; /* 160px / 16 */
+        height: 15.875em; /* 254px / 16 */
+    }
+}
+
+@media(max-width: 56.25em) { /* 900px / 16 */
     .btn-lateral {
         display: none;
+    }
+}
+
+/* =========================================
+   KEYFRAMES DINÁMICOS
+   ========================================= */
+
+@keyframes moverFormas{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-65em); /* 1040px / 16 */
     }
 }
