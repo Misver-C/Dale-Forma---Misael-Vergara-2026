@@ -1,5 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: "Obliqua Sans";
+    src: url(assets/fuentes/fonnts.com-Obliqua_Sans.otf);
+    font-weight: normal;
+}
 
+@font-face {
+    font-family: "Obliqua Sans";
+    src: url(assets/fuentes/fonnts.com-Obliqua_Sans_Bold.otf);
+    font-weight: bold;
+}
 *{
     margin: 0;
     padding: 0;
@@ -7,18 +16,32 @@
 }
 html{
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
 }
 
 body{
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Obliqua Sans', normal;
     background: #f5f5f5;
     color: #333;
-    background-image: url("assets/logo/paleta_1.png");
+    background-image: url("assets/paleta_1.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-x: hidden;
+}
+
+.bg-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1; 
 }
 
 /* ===================================================
@@ -83,8 +106,14 @@ body.bloquear-scroll {
    HERO & ANCLAJE GEOMÉTRICO
    ========================================= */
 
+.hero-scroll-wrapper {
+    height: 140vh; /* Reducido de 200vh para que la transición sea más rápida */
+    position: relative;
+    z-index: 10;
+}
+
 .hero {
-    height: 75vh;
+    height: 100vh;
     display: flex;
     justify-content: center; 
     align-items: center;     
@@ -92,8 +121,8 @@ body.bloquear-scroll {
     color: black;
     background-size: cover;
     background-position: center;
-    margin-top: 5em; /* 80px / 16 */
-    position: relative;
+    position: sticky;
+    top: 0;
     overflow: visible; 
 }
 
@@ -104,6 +133,8 @@ body.bloquear-scroll {
     align-items: center;
     justify-content: center;
     position: relative;
+    z-index: 2;
+    pointer-events: none; /* Deja pasar el ratón hacia las piezas de atrás */
 }
 
 .logo-interactivo {
@@ -114,6 +145,7 @@ body.bloquear-scroll {
     align-items: center;
     gap: 0.625em; /* 10px / 16 */
     position: relative;
+    pointer-events: auto; /* Reactiva interacción para el logo */
     perspective: 62.5em; /* 1000px / 16 */
     width: max-content;
     margin: 0 auto;
@@ -127,11 +159,12 @@ body.bloquear-scroll {
     gap: 0em;
     transform-style: preserve-3d;
     width: max-content;
+    overflow: visible;
 }
 
 .fila img {
-    width: 8.125em; /* 130px / 16 */
-    height: auto;
+    height: 8em; /* Mantener la altura idéntica a las letras previas */
+    width: auto;
     display: block;
     cursor: default;
     position: relative;
@@ -145,8 +178,9 @@ body.bloquear-scroll {
    ========================================= */
 
 .hero h1{
-    font-size: 3.8rem; /* Respetando rem para escalado de fuentes globales */
-    margin-top: 1.5em; /* 45px / 16 */
+    font-family: "Obliqua Sans";
+    font-size: 2rem; /* Respetando rem para escalado de fuentes globales */
+    margin-top: 0.3em; /* 45px / 16 */
     margin-bottom: 0.625em; /* 10px / 16 */
     color: rgb(68, 52, 34);
 }
@@ -156,7 +190,7 @@ body.bloquear-scroll {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.9375em; /* 15px / 16 */
-    font-size: 3.8rem;
+    font-size: 1.5rem;
 }
 
 .titulo-interactivo.fijo {
@@ -200,19 +234,134 @@ body.bloquear-scroll {
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
+/* Botón Experiencia CSS */
+.boton-experiencia {
+    margin-top: 3.5em; /* Distancia respecto al subtítulo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    pointer-events: auto; /* Para que funcione el click y hover */
+    width: 14em; /* Tamaño predeterminado */
+    padding: 0.8em 0;
+    background-color: #913028;
+    color: white;
+    font-family: "Obliqua Sans", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 2em; /* Bordes redondeados clásicos de botón */
+    border: 2px solid transparent; /* Transparente para evitar saltos al hacer hover */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    will-change: transform;
+    opacity: 0;
+    transform: translateY(0.9375em);
+    animation: fadeInBtn 0.5s ease forwards;
+    animation-delay: 0.5s; /* Aparece después del título */
+}
+
+.boton-experiencia:hover {
+    background-color: white;
+    color: black;
+    border-color: black;
+    transform: scale(1.05);
+}
+
+@keyframes fadeInBtn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* =========================================
    SECCIÓN INTRO
    ========================================= */
 
 .intro{
     padding: 4rem 11rem; /* Mantenidos en rem por consistencia de layouts de sección */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.momentos {
+    padding: 4rem 11rem; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    background-color: transparent; /* Misma integración fluida que el intro */
+}
+
+/* =========================================
+   GRILLA MOMENTOS (REFERENCIA)
+   ========================================= */
+.momentos-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.mom-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: space-between;
+}
+
+.col-bottom-align {
+    justify-content: flex-end; /* Alinea los elementos al fondo */
+}
+
+.forma-momento {
+    display: block;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.1s ease-out; /* Importante para el JS hover */
+    will-change: transform;
+    cursor: pointer;
+}
+
+/* Tamaños proporcionales según la imagen de referencia */
+.f-verde-alta { width: 5.5rem; height: 100%; }
+.f-verde-curva { width: 9rem; }
+.f-verde-corta { width: 4.5rem; margin-left: 0.5rem; }
+.f-azul-cuad { width: 9rem; }
+.f-azul-alta { width: 9rem; }
+.f-amar-media { width: 8.5rem; margin-bottom: 1rem; }
+.f-amar-entera { width: 9rem; }
+.f-rojo-recta { width: 6.5rem; margin-bottom: 1rem; margin-left: 1rem; }
+.f-rojo-eq { width: 10rem; }
+
+.intro-bg-gif {
+    position: fixed;
+    top: -5vh;
+    left: -5vw;
+    width: 110vw;
+    height: 110vh;
+    background-image: url("assets/secuencia.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(6px); /* Difuminado para legibilidad */
+    opacity: 0; /* Controlado dinámicamente por JS */
+    z-index: -1;
+    transition: opacity 0.1s; /* Transición rápida para que JS lo maneje suave */
+    pointer-events: none; /* Evitar bloqueos de clics */
 }
 
 .intro-contenedor {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 75em; /* 1200px / 16 */
+    max-width: 45em; /* Reducido a 45em como se pidió */
     margin: 0 auto;
     padding: 4rem 2rem;
     gap: 4.375em; /* 70px / 16 */
@@ -220,12 +369,19 @@ body.bloquear-scroll {
 
 .intro-texto {
     flex: 1;
+    max-width: 55em; /* Doble seguro, ampliado desde 45em */
+    margin: 0 auto;
+    position: relative;
+    z-index: 1; /* Asegura que el texto esté por encima del gif */
 }
 
 .intro h1{
+    font-family: "Obliqua Sans";
+    font-weight: bold;
     text-align: center;
     font-size: 3rem;
     color: rgb(68, 52, 34);
+    margin-top: 3em;
     margin-bottom: 1.5rem;
 }   
 
@@ -236,6 +392,26 @@ body.bloquear-scroll {
     color: rgb(68, 52, 34);
     flex: 1;
     font-weight: 500;
+}
+
+/* =========================================
+   ANIMACIÓN: APARICIÓN SUAVE
+   ========================================= */
+
+.contenedor-aparicion-suave {
+    overflow: hidden;
+    padding-bottom: 0.1em; /* Previene recortes menores en fuentes oblicuas */
+}
+
+.aparicion-suave {
+    display: inline-block;
+    transform: translateY(105%); /* Ligeramente más de 100% para asegurar que esté oculto */
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+.aparicion-suave.activa {
+    transform: translateY(0);
 }
 
 /* =========================================
@@ -451,26 +627,6 @@ body.bloquear-scroll {
 }
 
 /* =========================================
-   EFECTOS HOVER COMPLEMENTARIOS
-   ========================================= */
-
-.btn-lateral:hover .btn-img-contenedor {
-    transform: scale(1.15);
-}
-
-.btn-lateral:hover .img-normal {
-    opacity: 0;
-}
-.btn-lateral:hover .img-hover {
-    opacity: 1;
-}
-
-.btn-lateral:hover .btn-texto {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* =========================================
    MEDIA QUERIES (RESPONSIVE IN EM)
    ========================================= */
 
@@ -509,12 +665,6 @@ body.bloquear-scroll {
     }
 }
 
-@media(max-width: 56.25em) { /* 900px / 16 */
-    .btn-lateral {
-        display: none;
-    }
-}
-
 /* =========================================
    KEYFRAMES DINÁMICOS
    ========================================= */
@@ -526,4 +676,183 @@ body.bloquear-scroll {
     to{
         transform: translateX(-65em); /* 1040px / 16 */
     }
+}
+
+/* =========================================
+   PIEZAS FLOTANTES HERO
+   ========================================= */
+
+.piezas-flotantes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden; 
+}
+
+.pieza-scroll-wrapper {
+    position: absolute;
+    translate: var(--scroll-dx, 0px) var(--scroll-dy, 0px);
+    pointer-events: none; 
+}
+
+.pieza-float-wrapper {
+    animation: floatingPiece var(--float-dur, 5s) ease-in-out infinite alternate;
+    translate: var(--hover-dx, 0px) var(--hover-dy, 0px);
+    transition: translate 0.1s ease-out;
+}
+
+@keyframes floatingPiece {
+    0% { transform: translate(0, 0); }
+    33% { transform: translate(var(--fx1, 10px), var(--fy1, -15px)); }
+    66% { transform: translate(var(--fx2, -15px), var(--fy2, 10px)); }
+    100% { transform: translate(0, 0); }
+}
+
+.pieza-flotante {
+    display: block;
+    pointer-events: auto; 
+    cursor: pointer;
+    transition: transform 0.1s ease-out; /* Mismo transition que el logo */
+    will-change: transform;
+}
+
+/* =========================================
+   MORPHING NAVBAR
+   ========================================= */
+.nav-botones-wrapper {
+    margin-top: 3.5em;
+    width: 100%;
+    height: 3em; /* Placeholder height */
+    display: flex;
+    justify-content: center;
+}
+
+.nav-morfosis {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    background-color: #dcdccb; /* Mismo color que el contenedor fixed */
+    padding: 2.5em 1.5em; /* Aumentado 1em en Y, reducido 1em en X para alterar 2em el total */
+    border-radius: 4em; /* Borde redondeado estilo píldora */
+    border: 3px solid #737160; /* Mismo borde que el contenedor fixed */
+}
+
+.nav-btn {
+    width: 12em;
+    height: 4em;
+    border-radius: 3em;
+    border: 2px solid transparent; /* Para transición de hover sin layout shift */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+}
+
+.nav-rojo { --btn-color: #d12539; background-color: var(--btn-color); }
+.nav-azul { --btn-color: #87cde8; background-color: var(--btn-color); }
+.nav-verde { --btn-color: #0b8e36; background-color: var(--btn-color); }
+.nav-amarillo { --btn-color: #f5a02d; background-color: var(--btn-color); }
+
+/* Efecto hover: invertimos colores */
+.nav-morfosis:not(.is-fixed) .nav-btn:hover {
+    background-color: white;
+    border-color: var(--btn-color);
+}
+
+.nav-morfosis:not(.is-fixed) .nav-btn:hover .btn-texto {
+    color: black;
+}
+
+.btn-texto {
+    color: white;
+    font-family: "Obliqua Sans", sans-serif;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    opacity: 1;
+    transition: all 0.3s ease; /* Transiciona la opacidad y el color */
+}
+
+/* --- ESTADO FIJO (STICKY) --- */
+.nav-morfosis.is-fixed {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: #dcdccb; /* Color inspirado en la referencia */
+    padding: 0.8em 1.5em;
+    border-radius: 3em;
+    border: 3px solid #737160;
+    gap: 1.5em;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.nav-morfosis.is-fixed .nav-btn {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.nav-morfosis.is-fixed .nav-btn.activo {
+    width: 6em;
+    height: 1.5em;
+    border-radius: 1em;
+}
+
+.nav-morfosis.is-fixed .btn-texto {
+    opacity: 0;
+    width: 0;
+    display: none;
+}
+
+/* =========================================
+   FONDOS FLOTANTES
+   ========================================= */
+#bg-piezas-flotantes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.pieza-bg-fall {
+    position: absolute;
+    top: -30vh;
+    animation: bgFall var(--fall-dur) linear infinite;
+    animation-delay: var(--fall-delay);
+}
+
+.pieza-bg-float {
+    animation: bgFloat var(--float-dur) infinite ease-in-out alternate, bgRotate var(--rot-dur) infinite linear;
+    filter: blur(6px);
+    opacity: 0.4;
+}
+
+@keyframes bgFall {
+    0% { top: -30vh; }
+    100% { top: 120vh; }
+}
+
+@keyframes bgFloat {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(var(--fx), var(--fy)); }
+}
+
+@keyframes bgRotate {
+    0% { rotate: 0deg; }
+    100% { rotate: var(--rot-end); }
 }

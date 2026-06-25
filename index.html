@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dale Forma - Landing</title>
+    <title>¡Dale Forma! - Inicio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="bg-blur" class="bg-blur"></div>
+    <div id="bg-piezas-flotantes"></div>
 
 <div id="pantalla-intro" class="pantalla-intro">
         <div class="intro-mascara-contenedor">
@@ -21,23 +23,17 @@
         </div>
     </div>
 
+    <div class="hero-scroll-wrapper">
     <section class="hero">
 
         <div class="hero-content">
 
             <div class="logo-interactivo">
                 <div class="fila">
-                    <img src="assets/logo/d.png" alt="D">
-                    <img src="assets/logo/a.png" alt="A">
-                    <img src="assets/logo/l.png" alt="L">
-                    <img src="assets/logo/e.png" alt="E">
+                    <img src="assets/logo/dale.png" alt="Dale" class="palabra-dale">
                 </div>
                 <div class="fila">
-                    <img src="assets/logo/F.png" alt="F">
-                    <img src="assets/logo/o.png" alt="O">
-                    <img src="assets/logo/r.png" alt="R">
-                    <img src="assets/logo/m.png" alt="M">
-                    <img src="assets/logo/a1.png" alt="A">
+                    <img src="assets/logo/forma.png" alt="Forma" class="palabra-forma">
                 </div>
             </div>
 
@@ -47,57 +43,86 @@
                 <a href="#gana" class="subt">y gana!</a>
             </h1>
 
+            <a href="https://misver-c.github.io/Dale-Forma---Experiencia/" class="boton-experiencia">
+                ¡Prueba la Experiencia!
+            </a>
+
         </div>
     </section>
+    </div>
 
     <section id="intro" class="intro">
-
- <div class="formas-track">
-            <img src="assets/piezas/amar1.png" class="forma" alt="am1">
-            <img src="assets/piezas/rojo1.png" class="forma" alt="ro1">
-            <img src="assets/piezas/verde1.png" class="forma" alt="ve1">
-            <img src="assets/piezas/azul1.png" class="forma" alt="az1">
-            <img src="assets/piezas/amar2.png" class="forma" alt="am2">
-            <img src="assets/piezas/rojo2.png" class="forma" alt="ro2">
-            <img src="assets/piezas/verde2.png" class="forma" alt="ve2">
-            <img src="assets/piezas/azul2.png" class="forma" alt="az2">
-
-            <img src="assets/piezas/amar1.png" class="forma" alt="am1">
-            <img src="assets/piezas/rojo1.png" class="forma" alt="ro1">
-            <img src="assets/piezas/verde1.png" class="forma" alt="ve1">
-            <img src="assets/piezas/azul1.png" class="forma" alt="az1">
-            <img src="assets/piezas/amar2.png" class="forma" alt="am2">
-            <img src="assets/piezas/rojo2.png" class="forma" alt="ro2">
-            <img src="assets/piezas/verde2.png" class="forma" alt="ve2">
-            <img src="assets/piezas/azul2.png" class="forma" alt="az2"> 
-
-            <img src="assets/piezas/amar1.png" class="forma" alt="am1">
-            <img src="assets/piezas/rojo1.png" class="forma" alt="ro1">
-            <img src="assets/piezas/verde1.png" class="forma" alt="ve1">
-            <img src="assets/piezas/azul1.png" class="forma" alt="az1">
-            <img src="assets/piezas/amar2.png" class="forma" alt="am2">
-            <img src="assets/piezas/rojo2.png" class="forma" alt="ro2">
-            <img src="assets/piezas/verde2.png" class="forma" alt="ve2">
-            <img src="assets/piezas/azul2.png" class="forma" alt="az2"> 
-        </div>
+        <div class="intro-bg-gif"></div>
 
          <div class="intro-texto">
-                <h1>¡Bienvenido a Dale Forma!</h1>
-                <p>
-                    En este juego de construcción rápida, los jugadores utilizan las piezas del juego para construir figuras relacionadas al concepto de la ronda.
-                    El objetivo es hacer las mejores construcciones para ganar fichas, juntar las cinco cartas Forma y así ganar el juego.
+                <h1 class="contenedor-aparicion-suave">
+                    <span class="aparicion-suave" id="h1-intro">¡Bienvenido al juego de construcción más adrenalínico existente!</span>
+                </h1>
+                <p class="contenedor-aparicion-suave">
+                    <span class="aparicion-suave">Dale Forma es un juego de construcción rápida en la que la agilidad mental y creativa es la clave para ganar, ¡usa las piezas del juego para construir objetos relacionados al concepto de la ronda para ganar fichas y comprar cartas!</span>
                 </p>
+
+                <!-- Wrapper Ancla para la Navbar Dinámica -->
+                <div class="nav-botones-wrapper" id="nav-wrapper">
+                    <div class="nav-morfosis" id="nav-morfosis">
+                        <button class="nav-btn nav-rojo activo" data-target="intro">
+                            <span class="btn-texto">¿Cómo se juega?</span>
+                        </button>
+                        <button class="nav-btn nav-azul" data-target="construye">
+                            <span class="btn-texto">Galería de fotos</span>
+                        </button>
+                        <button class="nav-btn nav-verde" data-target="junta">
+                            <span class="btn-texto">Partitura PIX</span>
+                        </button>
+                        <button class="nav-btn nav-amarillo" data-target="seccion-amarilla">
+                            <span class="btn-texto">Fundamento</span>
+                        </button>
+                    </div>
+                </div>
+
             </div>
+    </section>
+
+    <section id="momentos" class="momentos">    
+        <div class="intro-texto">
+            <h1 class="contenedor-aparicion-suave">
+                <span class="aparicion-suave">¿Cómo se juega?</span>
+            </h1>
+            <p class="contenedor-aparicion-suave">
+                <span class="aparicion-suave">Aquí puedes colocar la descripción de la galería de fotos o momentos destacados.</span>
+            </p>
+
+            <div class="momentos-grid">
+                <div class="mom-col">
+                    <img src="assets/piezas/verde3.png" class="forma forma-momento f-verde-alta" alt="verde alta">
+                </div>
+                <div class="mom-col">
+                    <img src="assets/piezas/verde1.png" class="forma forma-momento f-verde-curva" alt="verde curva">
+                    <img src="assets/piezas/verde2.png" class="forma forma-momento f-verde-corta" alt="verde corta">
+                </div>
+                <div class="mom-col">
+                    <img src="assets/piezas/azul1.png" class="forma forma-momento f-azul-cuad" alt="azul cuadrada">
+                    <img src="assets/piezas/azul2.png" class="forma forma-momento f-azul-alta" alt="azul alta">
+                </div>
+                <div class="mom-col col-bottom-align">
+                    <img src="assets/piezas/amar2.png" class="forma forma-momento f-amar-media" alt="amarilla media">
+                    <img src="assets/piezas/amar1.png" class="forma forma-momento f-amar-entera" alt="amarilla entera">
+                </div>
+                <div class="mom-col col-bottom-align">
+                    <img src="assets/piezas/rojo1.png" class="forma forma-momento f-rojo-recta" alt="rojo recta">
+                    <img src="assets/piezas/rojo2.png" class="forma forma-momento f-rojo-eq" alt="rojo equilatera">
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="construye" class="construye">
         
         <div class="construye-contenedor">
             <div class="construye-texto">
-                <h1>¡Hora de construir!</h1>
+                <h1>¡Construye tu objeto!</h1>
                 <p>
-                    Los demás jugadores (constructores) deben crear algo relacionado con el concepto usando sus piezas y conectores. 
-                    Tendrán solo un minuto para construir, hasta que la arena termine de caer o todos hayan terminado su creación.
+                    El vocero escogió un concepto. ¡Actúa rápido! tienes un minuto para construir con ayuda de las piezas del juego un objeto que se relacione con el tema dictado. Este deberá elegir la mejor construcción ¡esfuérzate para ganar!
                 </p>
             </div>
             <div class="construye-gif">
@@ -190,10 +215,10 @@
             <div class="contenedor-carta-interactiva">
                 <div class="carta-flipper">
                     <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/esprev.png" alt="Carta 1">
+                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 1">
                     </div>
                     <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/espf.png" alt="Reverso 1">
+                        <img src="assets/cartas/especiales/espf.png" alt="Reverso 1">
                     </div>
                 </div>
             </div>
@@ -201,10 +226,10 @@
             <div class="contenedor-carta-interactiva">
                 <div class="carta-flipper">
                     <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/esprev.png" alt="Carta 2">
+                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 2">
                     </div>
                     <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/espo.png" alt="Reverso 2">
+                        <img src="assets/cartas/especiales/espo.png" alt="Reverso 2">
                     </div>
                 </div>
             </div>
@@ -212,10 +237,10 @@
             <div class="contenedor-carta-interactiva">
                 <div class="carta-flipper">
                     <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/esprev.png" alt="Carta 3">
+                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 3">
                     </div>
                     <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/espr.png" alt="Reverso 3">
+                        <img src="assets/cartas/especiales/espr.png" alt="Reverso 3">
                     </div>
                 </div>
             </div>
@@ -223,10 +248,10 @@
                         <div class="contenedor-carta-interactiva">
                 <div class="carta-flipper">
                     <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/esprev.png" alt="Carta 3">
+                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 3">
                     </div>
                     <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/espm.png" alt="Reverso 3">
+                        <img src="assets/cartas/especiales/espm.png" alt="Reverso 3">
                     </div>
                 </div>
             </div>
@@ -234,10 +259,10 @@
                         <div class="contenedor-carta-interactiva">
                 <div class="carta-flipper">
                     <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/esprev.png" alt="Carta 3">
+                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 3">
                     </div>
                     <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/espa.png" alt="Reverso 3">
+                        <img src="assets/cartas/especiales/espa.png" alt="Reverso 3">
                     </div>
                 </div>
             </div>
