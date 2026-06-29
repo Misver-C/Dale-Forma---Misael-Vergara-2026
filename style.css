@@ -236,7 +236,7 @@ body.bloquear-scroll {
 
 /* Botón Experiencia CSS */
 .boton-experiencia {
-    margin-top: 3.5em; /* Distancia respecto al subtítulo */
+    margin: 3.5em auto 3em auto; /* Centrado horizontal automático */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -246,6 +246,7 @@ body.bloquear-scroll {
     padding: 0.8em 0;
     background-color: #913028;
     color: white;
+    border-color: white;
     font-family: "Obliqua Sans", sans-serif;
     font-size: 1.3rem;
     font-weight: 600;
@@ -258,6 +259,10 @@ body.bloquear-scroll {
     transform: translateY(0.9375em);
     animation: fadeInBtn 0.5s ease forwards;
     animation-delay: 0.5s; /* Aparece después del título */
+}
+
+.boton-fundamento {
+    border: 2px solid white;
 }
 
 .boton-experiencia:hover {
@@ -329,16 +334,17 @@ body.bloquear-scroll {
     cursor: pointer;
 }
 
-/* Tamaños proporcionales según la imagen de referencia */
-.f-verde-alta { width: 5.5rem; height: 100%; }
-.f-verde-curva { width: 9rem; }
-.f-verde-corta { width: 4.5rem; margin-left: 0.5rem; }
-.f-azul-cuad { width: 9rem; }
-.f-azul-alta { width: 9rem; }
-.f-amar-media { width: 8.5rem; margin-bottom: 1rem; }
-.f-amar-entera { width: 9rem; }
-.f-rojo-recta { width: 6.5rem; margin-bottom: 1rem; margin-left: 1rem; }
-.f-rojo-eq { width: 10rem; }
+/* Tamaños proporcionales (Escala grande) según la imagen de referencia */
+/* PREFIJO AÑADIDO (.momentos-grid) PARA VENCER LA ESPECIFICIDAD DE .forma */
+.momentos-grid .f-verde-alta { width: 5rem; } 
+.momentos-grid .f-verde-curva { width: 5rem; }
+.momentos-grid .f-verde-corta { width: 6rem; margin-left: 2rem; } 
+.momentos-grid .f-azul-cuad { width: 12rem; }
+.momentos-grid .f-azul-alta { width: 10rem; margin-left: 3.5rem; } 
+.momentos-grid .f-amar-media { width: 10rem; margin-bottom: 1rem; }
+.momentos-grid .f-amar-entera { width: 10rem; margin-left: -0.5rem; }
+.momentos-grid .f-rojo-recta { width: 9rem; margin-bottom: 2rem; margin-left: 1rem; } 
+.momentos-grid .f-rojo-eq { width: 9rem; }
 
 .intro-bg-gif {
     position: fixed;
@@ -414,13 +420,33 @@ body.bloquear-scroll {
     transform: translateY(0);
 }
 
+.momentos h1{
+    font-family: "Obliqua Sans";
+    font-weight: bold;
+    text-align: center;
+    font-size: 3rem;
+    color: rgb(68, 52, 34);
+    margin-top: 3em;
+    margin-bottom: 1.5rem;
+}   
+
+.momentos p{
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgb(68, 52, 34);
+    flex: 1;
+    font-weight: 500;
+}
+
+
 /* =========================================
    SECCIÓN CONSTRUYE
    ========================================= */
 
 .construye{
     overflow: hidden;
-    padding-bottom: 8rem;
+    padding-bottom: 2rem;
 }
 
 .construye-contenedor {
@@ -437,20 +463,40 @@ body.bloquear-scroll {
     flex: 1;
 }
 
-.construye h1{
-    text-align: left;
+.construye h1 {
+    text-align: right;
     font-size: 3rem;
     color: rgb(68, 52, 34);
     margin-bottom: 1.5rem;
 }   
 
-.construye p{
-    text-align: left;
+.construye p {
+    text-align: right;
     font-size: 1.2rem;
     line-height: 1.6;
     color: rgb(68, 52, 34);
     flex: 1;
     font-weight: 500;
+}
+
+.gana h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: rgb(68, 52, 34);
+    margin-bottom: 1.5rem;
+}
+
+.gana p {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgb(68, 52, 34);
+    flex: 1;
+    font-weight: 500;
+}
+
+.gana .construye-contenedor {
+    justify-content: center;
 }
 
 .construye-gif {
@@ -463,9 +509,7 @@ body.bloquear-scroll {
 .construye-gif img {
     width: 100%;
     height: auto;
-    border-radius: 0.9375em; /* 15px / 16 */
     object-fit: cover;
-    box-shadow: 0 0.625em 1.875em rgba(68, 52, 34, 0.15); /* 10px y 30px */
 }
 
 /* =========================================
@@ -478,7 +522,7 @@ body.bloquear-scroll {
     gap: 0.625em; /* 10px / 16 */
     width: max-content; 
     animation: moverFormas 15s linear infinite; 
-    margin-bottom: 7rem;
+    margin-bottom: 2rem;
 }
 
 .formas-track:hover{
@@ -502,7 +546,7 @@ body.bloquear-scroll {
 
 .junta{
     overflow: hidden;
-    padding-bottom: 8rem;
+    padding-bottom: 5em;
 }
 
 .junta-contenedor {
@@ -511,23 +555,24 @@ body.bloquear-scroll {
     justify-content: space-between;
     max-width: 75em; /* 1200px / 16 */
     margin: 0 auto;
-    padding: 4rem 2rem;
-    gap: 4.375em; /* 70px / 16 */
+    padding: 1rem 1rem;
+    gap: 1em; /* 70px / 16 */
 }
 
 .junta-texto {
     flex: 1;
+    margin-left: 3em;
 }
 
-.junta h1{
-    text-align: right;
+.vocero h1, .junta h1 {
+    text-align: left; /* Alineación a la izquierda por su posición en la pantalla */
     font-size: 3rem;
     color: rgb(68, 52, 34);
     margin-bottom: 1.5rem;
 }   
 
-.junta p{
-    text-align: right;
+.vocero p, .junta p {
+    text-align: left;
     font-size: 1.2rem;
     line-height: 1.6;
     color: rgb(68, 52, 34);
@@ -601,6 +646,8 @@ body.bloquear-scroll {
     height: 100%;
     object-fit: cover; 
     display: block;
+    will-change: transform; /* Optimización GPU para prevenir lag */
+    transform: translateZ(0); /* Pre-renderizar imágenes pesadas */
 }
 
 .carta-frente {
@@ -619,11 +666,36 @@ body.bloquear-scroll {
 
 .gana {
     overflow: hidden;
-    padding-bottom: 8rem;
+    padding-bottom: 2rem;
 }
 
 .fundamento {
     height: auto;
+}
+
+.fundamento p, .pix p {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: white;
+    font-weight: 500;
+}
+
+.fundamento h1.titulo-galeria, .pix h1.titulo-galeria {
+    color: white;
+}
+
+.bg-fundamento {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #913028;
+    opacity: 0; /* Controlado por JS */
+    pointer-events: none;
+    z-index: -3; /* Debajo de las piezas flotantes que tienen -2 */
+    transition: opacity 0.5s ease;
 }
 
 /* =========================================
@@ -642,7 +714,7 @@ body.bloquear-scroll {
     .construye-contenedor, .junta-contenedor {
         flex-direction: column;
         text-align: center;
-        padding: 2rem 1rem;
+        padding: 1rem 1rem;
     }
 
     .construye h1, .construye p, .junta h1, .junta p {
@@ -855,4 +927,135 @@ body.bloquear-scroll {
 @keyframes bgRotate {
     0% { rotate: 0deg; }
     100% { rotate: var(--rot-end); }
+}
+
+/* =========================================
+   GALERÍA DE FOTOS
+   ========================================= */
+
+.galeria {
+    padding: 4rem 8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.titulo-galeria {
+    font-family: "Obliqua Sans";
+    font-weight: bold;
+    text-align: center;
+    font-size: 3rem;
+    color: rgb(68, 52, 34);
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+}
+
+.galeria-item {
+    position: relative;
+    width: 100%;
+    height: 28em;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 0.9375em;
+    cursor: pointer;
+    box-shadow: 0 0.625em 1.875em rgba(68, 52, 34, 0.15);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.galeria-item:hover img {
+    transform: scale(1.05);
+}
+
+.galeria-texto {
+    position: absolute;
+    bottom: -3em;
+    left: 0;
+    width: 100%;
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    transition: bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.galeria-item:hover .galeria-texto {
+    bottom: 0;
+}
+
+/* =========================================
+   VISUALIZADOR (LIGHTBOX)
+   ========================================= */
+
+.visualizador {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.visualizador.oculto {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.visualizador img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 0.9375em;
+    box-shadow: 0 1em 3em rgba(0,0,0,0.3);
+}
+
+.visualizador-cerrar {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 4rem;
+    color: rgb(68, 52, 34);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    transition: transform 0.2s ease;
+    z-index: 10000;
+}
+
+.visualizador-cerrar:hover {
+    transform: scale(1.2);
+}
+
+body.desenfoque-activo > *:not(#visualizador):not(script) {
+    filter: blur(10px);
+    pointer-events: none;
+    transition: filter 0.3s ease;
+}
+
+body > *:not(#visualizador):not(script) {
+    transition: filter 0.3s ease;
 }

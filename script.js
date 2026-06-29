@@ -170,7 +170,7 @@ const observadorAparicion = new IntersectionObserver((entradas) => {
         }
     });
 }, {
-    threshold: 1.0 
+    threshold: 0.1 
 });
 
 contenedoresAparicion.forEach(el => observadorAparicion.observe(el));
@@ -430,6 +430,41 @@ window.addEventListener("load", () => {
                     introBgGif.style.opacity = gifOpacity;
                 }
 
+                // Efecto Fade del fondo rojo para Fundamento y Pix
+                const bgFundamento = document.getElementById('bg-fundamento');
+                const fundamentoSection = document.getElementById('fundamento');
+                if (bgFundamento && fundamentoSection) {
+                    const rect = fundamentoSection.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    let bgOpacity = 0;
+                    
+                    // Si asoma por abajo, empezamos el fade, que durará exactamente 200px
+                    if (rect.top <= windowHeight) {
+                        const pixelesScrolleados = windowHeight - rect.top;
+                        bgOpacity = Math.max(0, Math.min(pixelesScrolleados / 200, 1));
+                    }
+                    if (rect.bottom < 0) {
+                         bgOpacity = 1;
+                    }
+                    
+                    bgFundamento.style.opacity = bgOpacity;
+
+                    // Transición de color del texto de #443422 a #ffffff
+                    // R: 68 a 255 (diferencia 187)
+                    // G: 52 a 255 (diferencia 203)
+                    // B: 34 a 255 (diferencia 221)
+                    const r = Math.round(68 + (187 * bgOpacity));
+                    const g = Math.round(52 + (203 * bgOpacity));
+                    const b = Math.round(34 + (221 * bgOpacity));
+                    const textColor = `rgb(${r}, ${g}, ${b})`;
+
+                    const textosFade = document.querySelectorAll('#fundamento .aparicion-suave, #pix .aparicion-suave');
+                    textosFade.forEach(texto => {
+                        texto.style.color = textColor;
+                        texto.style.transition = 'color 0.1s linear, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    });
+                }
+
                 // Aparecer fondo global de piezas a partir de la siguiente sección
                 if (bgPiezasContainer && construyeSection) {
                     const constRect = construyeSection.getBoundingClientRect();
@@ -456,7 +491,7 @@ window.addEventListener("load", () => {
                     }
 
                     // Scroll Spy (determinar qué sección está en pantalla)
-                    const seccionesSpy = ['intro', 'construye', 'junta', 'seccion-amarilla']; 
+                    const seccionesSpy = ['momentos', 'galeria', 'fundamento']; 
                     let seccionActivaId = 'intro'; // Por defecto la primera
 
                     seccionesSpy.forEach(id => {
@@ -478,6 +513,27 @@ window.addEventListener("load", () => {
                             btn.classList.remove('activo');
                         }
                     });
+                    
+                    // Hacer que los botones redirijan a la sección
+                    navBtns.forEach(btn => {
+                        // Evitar añadir múltiples listeners al hacer resize
+                        if (!btn.dataset.clickBound) {
+                            btn.dataset.clickBound = "true";
+                            btn.addEventListener('click', () => {
+                                const targetId = btn.dataset.target;
+                                const targetSection = document.getElementById(targetId);
+                                if (targetSection) {
+                                    // Compensar la altura de la barra fija si es necesario
+                                    const offset = 80; 
+                                    const topPos = targetSection.getBoundingClientRect().top + window.scrollY - offset;
+                                    window.scrollTo({
+                                        top: topPos,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            });
+                        }
+                    });
                 }
                 
                 // Permitir el próximo cálculo
@@ -486,4 +542,109 @@ window.addEventListener("load", () => {
             isTicking = true;
         }
     });
+});
+
+// ===================================================
+// CARTA INTERACTIVA VOCERO (CAMBIO ALEATORIO DE CONTEXTO)
+// ===================================================
+window.addEventListener("load", () => {
+    const cartaVocero = document.getElementById("carta-vocero-container");
+    const imgReverso = document.getElementById("img-reverso-vocero");
+    
+    if (cartaVocero && imgReverso) {
+        let currentRandom = 1; // Empieza con 1.png (como en HTML)
+        
+        cartaVocero.addEventListener("mouseleave", () => {
+            // El flip de CSS demora 0.8s. A la mitad (400ms) la cara se oculta. 
+            // Esperamos 500ms para asegurar que la imagen cambie mientras no se ve.
+            setTimeout(() => {
+                let nextRandom;
+                // Generar entre 1 y 16, evitando la que está en uso actual
+                do {
+                    nextRandom = Math.floor(Math.random() * 16) + 1;
+                } while (nextRandom === currentRandom);
+                
+                currentRandom = nextRandom;
+                imgReverso.src = `assets/cartas/contexto/${nextRandom}.png`;
+            }, 500);
+        });
+    }
+});
+
+// ===================================================
+// CARTAS INTERACTIVAS JUNTA (CAMBIO ALEATORIO DE ESPECIALES)
+// ===================================================
+window.addEventListener("load", () => {
+    const cartasJunta = document.querySelectorAll("#junta .contenedor-carta-interactiva");
+    
+    cartasJunta.forEach(carta => {
+        const imgReverso = carta.querySelector(".carta-reverso img");
+        
+        if (imgReverso) {
+            // Extraer el número inicial de la carta (esp1, esp2...) para no repetirlo
+            let currentRandom = 1;
+            const match = imgReverso.src.match(/esp(\d)\.png/);
+            if (match) {
+                currentRandom = parseInt(match[1], 10);
+            }
+            
+            carta.addEventListener("mouseleave", () => {
+                setTimeout(() => {
+                    let nextRandom;
+                    // Generar número del 1 al 4 evitando repetir la cara actual
+                    do {
+                        nextRandom = Math.floor(Math.random() * 4) + 1;
+                    } while (nextRandom === currentRandom);
+                    
+                    currentRandom = nextRandom;
+                    imgReverso.src = `assets/cartas/especiales/esp${nextRandom}.png`;
+                }, 500);
+            });
+        }
+    });
+});
+
+// ===================================================
+// GALERÍA DE FOTOS Y VISUALIZADOR
+// ===================================================
+window.addEventListener("load", () => {
+    const galeriaItems = document.querySelectorAll('.galeria-item');
+    const visualizador = document.getElementById('visualizador');
+    const imgVisualizador = document.getElementById('img-visualizador');
+    const btnCerrar = document.querySelector('.visualizador-cerrar');
+
+    if (galeriaItems.length > 0 && visualizador) {
+        
+        const abrirVisualizador = (src) => {
+            imgVisualizador.src = src;
+            visualizador.classList.remove('oculto');
+            document.body.classList.add('desenfoque-activo');
+        };
+
+        const cerrarVisualizador = () => {
+            visualizador.classList.add('oculto');
+            document.body.classList.remove('desenfoque-activo');
+        };
+
+        // Click en cada imagen de la galería
+        galeriaItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                if (img) abrirVisualizador(img.src);
+            });
+        });
+
+        // Cerrar al clickear la X
+        if (btnCerrar) {
+            btnCerrar.addEventListener('click', cerrarVisualizador);
+        }
+
+        // Cerrar al clickear fuera de la imagen (en el fondo)
+        visualizador.addEventListener('click', (e) => {
+            // Si el click fue directamente en el visualizador (el fondo) o en el contenedor, pero no en la imagen
+            if (e.target !== imgVisualizador) {
+                cerrarVisualizador();
+            }
+        });
+    }
 });

@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Dale Forma! - Inicio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Importar el componente model-viewer para el modelo 3D -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 <body>
     <div id="bg-blur" class="bg-blur"></div>
+    <div id="bg-fundamento" class="bg-fundamento"></div>
     <div id="bg-piezas-flotantes"></div>
 
 <div id="pantalla-intro" class="pantalla-intro">
@@ -65,17 +68,17 @@
                 <!-- Wrapper Ancla para la Navbar Dinámica -->
                 <div class="nav-botones-wrapper" id="nav-wrapper">
                     <div class="nav-morfosis" id="nav-morfosis">
-                        <button class="nav-btn nav-rojo activo" data-target="intro">
+                        <button class="nav-btn nav-rojo activo" data-target="momentos">
                             <span class="btn-texto">¿Cómo se juega?</span>
                         </button>
-                        <button class="nav-btn nav-azul" data-target="construye">
+                        <button class="nav-btn nav-azul" data-target="galeria">
                             <span class="btn-texto">Galería de fotos</span>
                         </button>
-                        <button class="nav-btn nav-verde" data-target="junta">
-                            <span class="btn-texto">Partitura PIX</span>
-                        </button>
-                        <button class="nav-btn nav-amarillo" data-target="seccion-amarilla">
+                        <button class="nav-btn nav-verde" data-target="fundamento">
                             <span class="btn-texto">Fundamento</span>
+                        </button>
+                        <button class="nav-btn nav-amarillo" data-target="pix">
+                            <span class="btn-texto">Partitura PIX</span>
                         </button>
                     </div>
                 </div>
@@ -89,7 +92,8 @@
                 <span class="aparicion-suave">¿Cómo se juega?</span>
             </h1>
             <p class="contenedor-aparicion-suave">
-                <span class="aparicion-suave">Aquí puedes colocar la descripción de la galería de fotos o momentos destacados.</span>
+                <span class="aparicion-suave">Cada participante tiene un set completo de piezas para construir todo tipo de creaciones. 
+                    <br>¡La imaginación es tu límite!</span>
             </p>
 
             <div class="momentos-grid">
@@ -97,8 +101,8 @@
                     <img src="assets/piezas/verde3.png" class="forma forma-momento f-verde-alta" alt="verde alta">
                 </div>
                 <div class="mom-col">
-                    <img src="assets/piezas/verde1.png" class="forma forma-momento f-verde-curva" alt="verde curva">
-                    <img src="assets/piezas/verde2.png" class="forma forma-momento f-verde-corta" alt="verde corta">
+                    <img src="assets/piezas/verde11.png" class="forma forma-momento f-verde-curva" alt="verde curva">
+                    <img src="assets/piezas/verde22.png" class="forma forma-momento f-verde-corta" alt="verde corta">
                 </div>
                 <div class="mom-col">
                     <img src="assets/piezas/azul1.png" class="forma forma-momento f-azul-cuad" alt="azul cuadrada">
@@ -114,166 +118,144 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="construye" class="construye">
+        <!-- NUEVAS SUBSECCIONES DENTRO DE MOMENTOS -->
         
-        <div class="construye-contenedor">
-            <div class="construye-texto">
-                <h1>¡Construye tu objeto!</h1>
-                <p>
-                    El vocero escogió un concepto. ¡Actúa rápido! tienes un minuto para construir con ayuda de las piezas del juego un objeto que se relacione con el tema dictado. Este deberá elegir la mejor construcción ¡esfuérzate para ganar!
-                </p>
-            </div>
-            <div class="construye-gif">
-                <img src="assets/construye.gif" alt="Animación del juego">
-            </div>
-        </div>
-    </section>
-
-    <section id="junta" class="junta">
-        <div class="junta-contenedor">
-             <div class="junta-gif">
-                <img src="assets/junta.gif" alt="Animación del juego">
-        </div>
-
-            <div class="junta-texto">
-        <h1>¡Junta cartas especiales!</h1>
-        <p>
-            Este mazo es clave para acercarte a la victoria. Al inicio de cada turno, puedes sacar una carta de este mazo a cambio de tres fichas.
-            En este mazo te puedes encontrar cartas de beneficio, negativas y de forma.
-        </p>
-            </div>
-        </div>
-       
- <div class="fila-cartas">
-            
-            <div class="contenedor-carta-interactiva">
-                <div class="carta-flipper">
-                    <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/esprev.png" alt="Carta 1">
-                    </div>
-                    <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/esp1.png" alt="Reverso 1">
-                    </div>
-                </div>
-            </div>
-
-            <div class="contenedor-carta-interactiva">
-                <div class="carta-flipper">
-                    <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/esprev.png" alt="Carta 2">
-                    </div>
-                    <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/esp2.png" alt="Reverso 2">
-                    </div>
-                </div>
-            </div>
-
-            <div class="contenedor-carta-interactiva">
-                <div class="carta-flipper">
-                    <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/esprev.png" alt="Carta 3">
-                    </div>
-                    <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/esp3.png" alt="Reverso 3">
-                    </div>
-                </div>
-            </div>
-
-            <div class="contenedor-carta-interactiva">
-                <div class="carta-flipper">
-                    <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/esprev.png" alt="Carta 3">
-                    </div>
-                    <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/esp4.png" alt="Reverso 3">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section id="gana" class="gana">
+        <section id="vocero" class="vocero sub-seccion">
             <div class="construye-contenedor">
-            <div class="construye-texto">
-                <h1>¡Haz la palabra y gana!</h1>
-                <p>
-                    Dentro de las cartas especiales hay letras que hacen la palabra "FORMA". 
-                    ¡Sé el primero en juntar las cinco para ganar!
-                </p>
+                <div class="construye-texto">
+                    <h1 class="contenedor-aparicion-suave">
+                        <span class="aparicion-suave">¡El Vocero tiene la palabra!</span>
+                    </h1>
+                    <p class="contenedor-aparicion-suave">
+                        <span class="aparicion-suave">En cada ronda, una persona asumirá el rol de vocero, el cual irá cambiando en cada nueva ronda. El vocero tendrá la facultad de sacar una carta de contexto y elegir el concepto que definirá el desarrollo de la ronda.</span>
+                    </p>
+                </div>
+                <div class="construye-gif">
+                   <div class="contenedor-carta-interactiva" id="carta-vocero-container">
+                    <div class="carta-flipper">
+                        <div class="carta-cara carta-frente">
+                            <img src="assets/cartas/contexto/conrev.png" alt="Conrev">
+                        </div>
+                        <div class="carta-cara carta-reverso">
+                            <img src="assets/cartas/contexto/1.png" alt="Contexto 1" id="img-reverso-vocero">
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
-            <div class="construye-gif">
-                <img src="assets/gana.gif" alt="Animación del juego">
-            </div>
-        </div>
+        </section>
 
-         <div class="fila-cartas">
-            
-            <div class="contenedor-carta-interactiva">
-                <div class="carta-flipper">
-                    <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 1">
+        <section id="construye" class="construye sub-seccion">
+            <div class="junta-contenedor">
+                <div class="junta-gif">
+                    <model-viewer src="assets/modeo.glb" alt="Modelo 3D del juego" auto-rotate camera-controls shadow-intensity="1" style="width: 100%; min-height: 400px; border-radius: 0.9375em; object-fit: contain; box-shadow: 0 0.625em 1.875em rgba(68, 52, 34, 0.15);"></model-viewer>
+                </div>
+                <div class="junta-texto">
+                    <h1 class="contenedor-aparicion-suave">
+                        <span class="aparicion-suave">¡Construye tu objeto!</span>
+                    </h1>
+                    <p class="contenedor-aparicion-suave">
+                        <span class="aparicion-suave">El vocero ha escogido un concepto. ¡Actúa rápido! Tienes un minuto para construir, con ayuda de las piezas del juego, un objeto que se relacione con el tema indicado. Al finalizar el tiempo, el vocero deberá elegir la mejor construcción. ¡Esfuérzate para ganar!</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="junta" class="junta sub-seccion">
+            <div class="construye-contenedor">
+                <div class="construye-texto">
+                    <h1 class="contenedor-aparicion-suave">
+                        <span class="aparicion-suave">¡Junta fichas para comprar cartas!</span>
+                    </h1>
+                    <p class="contenedor-aparicion-suave">
+                        <span class="aparicion-suave">El ganador de la ronda recibe fichas como recompensa. En cada ronda, podrá utilizar hasta tres fichas para comprar cartas especiales. Entre ellas encontrarás muchas sorpresas: algunas podrán favorecerte, otras perjudicarte y, con un poco de suerte, podría tocarte una carta FORMA.</span>
+                    </p>
+                </div>
+                <div class="construye-gif">
+                     <div class="contenedor-carta-interactiva">
+                    <div class="carta-flipper">
+                        <div class="carta-cara carta-frente">
+                            <img src="assets/cartas/especiales/esprev.png" alt="Carta 1">
+                        </div>
+                        <div class="carta-cara carta-reverso">
+                            <img src="assets/cartas/especiales/esp1.png" alt="Reverso 1">
+                        </div>
                     </div>
-                    <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/especiales/espf.png" alt="Reverso 1">
-                    </div>
+                </div>
+                </div>
+            </div>
+           
+        </section>
+
+        <section id="gana" class="gana sub-seccion">
+            <div class="construye-contenedor">
+                <div class="construye-texto">
+                    <h1 class="contenedor-aparicion-suave">
+                        <span class="aparicion-suave">¡Haz la palabra y gana!</span>
+                    </h1>
+                    <p class="contenedor-aparicion-suave">
+                        <span class="aparicion-suave">Dentro de las cartas especiales hay letras que hacen la palabra "FORMA". ¡Sé el primero en juntar las cinco para ganar!</span>
+                    </p>
                 </div>
             </div>
 
-            <div class="contenedor-carta-interactiva">
-                <div class="carta-flipper">
-                    <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 2">
+            <div class="fila-cartas">
+                <div class="contenedor-carta-interactiva">
+                    <div class="carta-flipper">
+                        <div class="carta-cara carta-frente">
+                            <img src="assets/cartas/especiales/esprev.png" alt="Carta 1">
+                        </div>
+                        <div class="carta-cara carta-reverso">
+                            <img src="assets/cartas/especiales/espf.png" alt="Reverso 1">
+                        </div>
                     </div>
-                    <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/especiales/espo.png" alt="Reverso 2">
+                </div>
+                <div class="contenedor-carta-interactiva">
+                    <div class="carta-flipper">
+                        <div class="carta-cara carta-frente">
+                            <img src="assets/cartas/especiales/esprev.png" alt="Carta 2">
+                        </div>
+                        <div class="carta-cara carta-reverso">
+                            <img src="assets/cartas/especiales/espo.png" alt="Reverso 2">
+                        </div>
+                    </div>
+                </div>
+                <div class="contenedor-carta-interactiva">
+                    <div class="carta-flipper">
+                        <div class="carta-cara carta-frente">
+                            <img src="assets/cartas/especiales/esprev.png" alt="Carta 3">
+                        </div>
+                        <div class="carta-cara carta-reverso">
+                            <img src="assets/cartas/especiales/espr.png" alt="Reverso 3">
+                        </div>
+                    </div>
+                </div>
+                <div class="contenedor-carta-interactiva">
+                    <div class="carta-flipper">
+                        <div class="carta-cara carta-frente">
+                            <img src="assets/cartas/especiales/esprev.png" alt="Carta 3">
+                        </div>
+                        <div class="carta-cara carta-reverso">
+                            <img src="assets/cartas/especiales/espm.png" alt="Reverso 3">
+                        </div>
+                    </div>
+                </div>
+                <div class="contenedor-carta-interactiva">
+                    <div class="carta-flipper">
+                        <div class="carta-cara carta-frente">
+                            <img src="assets/cartas/especiales/esprev.png" alt="Carta 3">
+                        </div>
+                        <div class="carta-cara carta-reverso">
+                            <img src="assets/cartas/especiales/espa.png" alt="Reverso 3">
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="contenedor-carta-interactiva">
-                <div class="carta-flipper">
-                    <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 3">
-                    </div>
-                    <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/especiales/espr.png" alt="Reverso 3">
-                    </div>
-                </div>
-            </div>
-
-                        <div class="contenedor-carta-interactiva">
-                <div class="carta-flipper">
-                    <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 3">
-                    </div>
-                    <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/especiales/espm.png" alt="Reverso 3">
-                    </div>
-                </div>
-            </div>
-
-                        <div class="contenedor-carta-interactiva">
-                <div class="carta-flipper">
-                    <div class="carta-cara carta-frente">
-                        <img src="assets/cartas/especiales/esprev.png" alt="Carta 3">
-                    </div>
-                    <div class="carta-cara carta-reverso">
-                        <img src="assets/cartas/especiales/espa.png" alt="Reverso 3">
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
 
     </section>
 
-    <section id="fundamento" class="fundamento">    
-    </section>
-
-                <div class="formas-track">
+                    <div class="formas-track">
             <img src="assets/piezas/amar1.png" class="forma" alt="am1">
             <img src="assets/piezas/rojo1.png" class="forma" alt="ro1">
             <img src="assets/piezas/verde1.png" class="forma" alt="ve1">
@@ -301,6 +283,109 @@
             <img src="assets/piezas/verde2.png" class="forma" alt="ve2">
             <img src="assets/piezas/azul2.png" class="forma" alt="az2"> 
         </div>
+
+
+    <section id="galeria" class="galeria">
+        <h1 class="contenedor-aparicion-suave titulo-galeria">
+            <span class="aparicion-suave">Galería de fotos</span>
+        </h1>
+        <div class="galeria-grid">
+            <div class="galeria-item">
+                <img src="assets/fotos/caja.png" alt="Caja">
+                <div class="galeria-texto">Caja del juego</div>
+            </div>
+            <div class="galeria-item">
+                <img src="assets/fotos/cartas.png" alt="Cartas">
+                <div class="galeria-texto">Cartas especiales</div>
+            </div>
+            <div class="galeria-item">
+                <img src="assets/fotos/conectores.png" alt="Conectores">
+                <div class="galeria-texto">Conectores</div>
+            </div>
+            <div class="galeria-item">
+                <img src="assets/fotos/fichas.png" alt="Fichas">
+                <div class="galeria-texto">Fichas de puntuación</div>
+            </div>
+            <div class="galeria-item">
+                <img src="assets/fotos/pieza.png" alt="Pieza">
+                <div class="galeria-texto">Piezas de construcción</div>
+            </div>
+            <div class="galeria-item">
+                <img src="assets/fotos/reloj.png" alt="Reloj">
+                <div class="galeria-texto">Reloj de arena</div>
+            </div>
+        </div>
+    </section>
+
+                    <div class="formas-track">
+            <img src="assets/piezas/amar1.png" class="forma" alt="am1">
+            <img src="assets/piezas/rojo1.png" class="forma" alt="ro1">
+            <img src="assets/piezas/verde1.png" class="forma" alt="ve1">
+            <img src="assets/piezas/azul1.png" class="forma" alt="az1">
+            <img src="assets/piezas/amar2.png" class="forma" alt="am2">
+            <img src="assets/piezas/rojo2.png" class="forma" alt="ro2">
+            <img src="assets/piezas/verde2.png" class="forma" alt="ve2">
+            <img src="assets/piezas/azul2.png" class="forma" alt="az2">
+
+            <img src="assets/piezas/amar1.png" class="forma" alt="am1">
+            <img src="assets/piezas/rojo1.png" class="forma" alt="ro1">
+            <img src="assets/piezas/verde1.png" class="forma" alt="ve1">
+            <img src="assets/piezas/azul1.png" class="forma" alt="az1">
+            <img src="assets/piezas/amar2.png" class="forma" alt="am2">
+            <img src="assets/piezas/rojo2.png" class="forma" alt="ro2">
+            <img src="assets/piezas/verde2.png" class="forma" alt="ve2">
+            <img src="assets/piezas/azul2.png" class="forma" alt="az2"> 
+
+            <img src="assets/piezas/amar1.png" class="forma" alt="am1">
+            <img src="assets/piezas/rojo1.png" class="forma" alt="ro1">
+            <img src="assets/piezas/verde1.png" class="forma" alt="ve1">
+            <img src="assets/piezas/azul1.png" class="forma" alt="az1">
+            <img src="assets/piezas/amar2.png" class="forma" alt="am2">
+            <img src="assets/piezas/rojo2.png" class="forma" alt="ro2">
+            <img src="assets/piezas/verde2.png" class="forma" alt="ve2">
+            <img src="assets/piezas/azul2.png" class="forma" alt="az2"> 
+        </div>
+
+    <section id="fundamento" class="fundamento">    
+                <br>
+        <br>
+         <h1 class="contenedor-aparicion-suave titulo-galeria">
+            <span class="aparicion-suave">Interpretación digital de la experiencia</span>
+         </h1>
+
+          <a href="https://misver-c.github.io/Dale-Forma---Experiencia/" class="boton-experiencia boton-fundamento">
+                ¡Prueba la Experiencia!
+            </a>
+
+         <p class="contenedor-aparicion-suave" style="max-width: 800px; margin: 0 auto; margin-bottom: 4rem;">
+            <span class="aparicion-suave">
+                    El juego "Dale Forma" destaca las formas geométricas y sus colores como elementos centrales de su identidad visual, reforzando una experiencia lúdica donde la creatividad es el principal medio para obtener recompensas mediante la construcción de diversas figuras.
+                    <br><br>
+                    La experiencia digital busca explorar el concepto de "forma" desde su esencia, otorgando al usuario la libertad de crear sus propias figuras en un plano bidimensional mediante herramientas de dibujo, promoviendo la experimentación y la creación de composiciones únicas.
+            </span>
+        </p>
+    </section>
+
+    <section id="pix" class="pix">  
+        <br>
+        <br>
+         <h1 class="contenedor-aparicion-suave titulo-galeria">
+            <span class="aparicion-suave">Partitura de Interacción PIX</span>
+         </h1>
+         <p class="contenedor-aparicion-suave" style="max-width: 800px; margin: 0 auto;">
+            <span class="aparicion-suave">La siguiente partitura muestra la experiencia interactiva del usuario con el juego de mesa.</span>
+        </p>
+        <div class="pix-iframe-container" style="margin-top: 3rem; padding: 0 10em; overflow: hidden;">
+            <iframe src="https://eadpucv.github.io/pix/#!/import/eyJ0aXRsZSI6IkRhbGUgRm9ybWE6IFByaW1lciBhY2VyY2FtaWVudG8gYWwganVlZ28iLCJsYXlvdXQiOiJwaXgiLCJkZXNjcmlwdGlvbiI6IkVsIG1vbWVudG8gZW4gZWwgcXVlIGVsIHVzdWFyaW8gdGllbmUgc3UgcHJpbWVyIHZpc3Rhem8gYWwganVlZ28gXCJEYWxlIGZvcm1hXCIsIGluc3BlY2Npb25hbmRvIGxhIGNhamEgeSBzdXMgZWxlbWVudG9zLiIsInNjb3JlcyI6W1t7InN0ZXBfdGl0bGUiOiJWaXN0YXpvIGEgbGEgY2FqYSIsInVzZXIiOiJwaXgtc3VycHJpc2VkIEFzw60gcXVlIGVzdGUgZXMgZWwgXCJEYWxlIGZvcm1hXCIiLCJkaWFsb2d1ZSI6IiIsInN5c3RlbSI6IiIsIm5vdGUiOiIifSx7InN0ZXBfdGl0bGUiOiIiLCJ1c2VyIjoiIiwiZGlhbG9ndWUiOiJwaXgtc2VhcmNoIFNlIHNpZW50YSBhIGluc3BlY2Npb25hciBsYSBjYWphIHkgc3VzIGVsZW1lbnRvcyB2aXN1YWxlcyIsInN5c3RlbSI6IiIsIm5vdGUiOiIifSx7InN0ZXBfdGl0bGUiOiIiLCJ1c2VyIjoicGl4LWludHJpZ3VlZCBWYW1vcyBhIHZlciBxdcOpIGRpY2UgZWwgcmV2ZXJzbyIsImRpYWxvZ3VlIjoicGl4LXJvdGF0ZSBEYSB2dWVsdGEgbGEgY2FqYSBwYXJhIGxlZXIgbG8gcXVlIGRpY2UgZGVsIG90cm8gbGFkbyIsInN5c3RlbSI6IiIsIm5vdGUiOiIifSx7InN0ZXBfdGl0bGUiOiIiLCJ1c2VyIjoicGl4LXN1cnByaXNlZCBWYXlhLCDCoXF1ZSBpbnRlcmVzYW50ZXMgc29uIGxvcyBvYmpldG9zIGRlbCBqdWVnbyEiLCJkaWFsb2d1ZSI6InBpeC12aWV3IExlZSBsYXMgZGVzY3JpcGNpw7NuZXMgeSByZXZpc2EgY2FkYSBwaWV6YSBpbHVzdHJhZGEiLCJzeXN0ZW0iOiIiLCJub3RlIjoiIn0seyJzdGVwX3RpdGxlIjoiIiwidXNlciI6InBpeC1zbWlsaW5nIFlhIG1lIGVzdMOhbiBkYW5kbyBnYW5hcyBkZSBqdWdhciIsImRpYWxvZ3VlIjoiIiwic3lzdGVtIjoiIiwibm90ZSI6IiJ9LHsic3RlcF90aXRsZSI6Ikluc3BlY2Npw7NuIGRlbCBpbnRlcmlvciIsInVzZXIiOiIiLCJkaWFsb2d1ZSI6InBpeC1zZWFyY2ggQWJyZSBsYSBjYWphIHkgcmV2aXNhIGEgZGV0YWxsZSBjYWRhIHBpZXphIiwic3lzdGVtIjoicGl4LXNlbmQgTGEgcGFydGUgc3VwZXJpb3IgZGUgbGEgY2FqYSBzZSBkZXNsaXphIHkgc2VwYXJhIHBvciBjb21wbGV0byBkZSBsYSBpbmZlcmlvciIsIm5vdGUiOiIifSx7InN0ZXBfdGl0bGUiOiIiLCJ1c2VyIjoicGl4LXN1cnByaXNlZCDCoVNvbiBtdWNoYXMgcGllemFzIHBhcmEgY29uc3RydWlyISIsImRpYWxvZ3VlIjoiIiwic3lzdGVtIjoiIiwibm90ZSI6IiJ9LHsic3RlcF90aXRsZSI6IiIsInVzZXIiOiIiLCJkaWFsb2d1ZSI6InBpeC1oYW5kIExldmFudGEgZGUgYSBwb2NvIGxhcyBwaWV6YXMgZGUgY29uc3RydWNjacOzbiIsInN5c3RlbSI6InBpeC10YXAxdXAgRWwgZGlzZcOxbyBlcmdvbsOzbWljbyBkZSBsYSBjYWphIHBlcm1pdGUgc2FjYXIgbGFzIHBpZXphcyBkZSBtYW5lcmEgc2VuY2lsbGEiLCJub3RlIjoiIn0seyJzdGVwX3RpdGxlIjoiIiwidXNlciI6InBpeC1oYXBweSDCoVNvbiBkb3MgbWF6b3MhIMKhWSBzb24gdGFudG9zIGNvbmNlcHRvcyEiLCJkaWFsb2d1ZSI6InBpeC1zZWFyY2ggQ29taWVuemEgYSByZXZpc2FyIGxhcyBjYXJ0YXMgZGUgbWFuZXJhIHLDoXBpZGEiLCJzeXN0ZW0iOiJwaXgta2lvc2sgTGEgdGV4dHVyYSBzdWF2ZSBkZSBsYXMgY2FydGFzIGhhY2UgcXVlIHNlIGFkaGllcmFuIGJpZW4gYSBsYXMgeWVtYXMgZGUgc3VzIGRlZG9zIiwibm90ZSI6IiJ9LHsic3RlcF90aXRsZSI6IiIsInVzZXIiOiJwaXgtc21pbGluZyDCoVF1w6kgw7p0aWxlcyBzb24gZXN0YXMgb3RyYXMgcGllemFzISIsImRpYWxvZ3VlIjoicGl4LXNlYXJjaCBPYnNlcnZhIGNvbiBkZXRlbmltaWVudG8gbGFzIHBpZXphcyBwZXF1ZcOxYXMgZGUgdW5pw7NuIiwic3lzdGVtIjoiIiwibm90ZSI6IiJ9LHsic3RlcF90aXRsZSI6IiIsInVzZXIiOiJwaXgtc3VycHJpc2VkIMKhQ3VhbnRhcyBmaWNoYXMhIiwiZGlhbG9ndWUiOiJwaXgtaGFuZDEgU2FjYSBsYSBib2xzYSBkZSBmaWNoYXMgeSBsYXMgb2JzZXJ2YSBzaW4gc2FjYXJsYXMgZGUgc3UgYm9sc2EiLCJzeXN0ZW0iOiJwaXgtY2xvdWQgTGEgYm9sc2Egc2luIGFicmlyc2UgY29udGllbmUgc3Ugdm9sdW1lbiB5IHBlcm1pdGUgdW4gYnVlbmEgYWdhcnJlIiwibm90ZSI6IiJ9LHsic3RlcF90aXRsZSI6IiIsInVzZXIiOiJwaXgtdGhpbmsgwqFCYXN0YSBkZSBpbnNwZWNjacOzbiHCoUVzIGhvcmEgZGUganVnYXIhIiwiZGlhbG9ndWUiOiIiLCJzeXN0ZW0iOiIiLCJub3RlIjoiIn1dXX0=" width="100%" height="646" frameborder="0" style="border-radius: 1em; box-shadow: 0 0.5em 1.5em rgba(0,0,0,0.2);"></iframe>
+        </div>
+        </div>
+    </section>
+
+
+    <div id="visualizador" class="visualizador oculto">
+        <div class="visualizador-cerrar">&times;</div>
+        <img id="img-visualizador" src="" alt="Imagen ampliada">
+    </div>
 
     <script src="script.js"></script>
 </body>
