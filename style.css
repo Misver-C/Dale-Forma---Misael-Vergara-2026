@@ -215,7 +215,7 @@ body.bloquear-scroll {
 
 .subt{
     text-decoration: none;
-    color: rgb(68, 52, 34);
+    color: #443422;
     display: inline-block;
     opacity: 0;
     transform: translateY(0.9375em); /* 15px / 16 */
@@ -263,6 +263,13 @@ body.bloquear-scroll {
 
 .boton-fundamento {
     border: 2px solid white;
+}
+
+.boton-wiki {
+    background-color: #101e33;
+    width: max-content;
+    padding: 0.8em 2em;
+    margin: 5em auto 5em auto;
 }
 
 .boton-experiencia:hover {
@@ -1054,6 +1061,71 @@ body.desenfoque-activo > *:not(#visualizador):not(script) {
     filter: blur(10px);
     pointer-events: none;
     transition: filter 0.3s ease;
+}
+
+/* =========================================
+   PIE DE PÁGINA
+   ========================================= */
+
+.pie-pagina {
+    background-color: #3b352b; /* Tono oscuro extraído de la referencia */
+    padding: 6rem 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-textos {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 55em; /* Contenedor para centrar el bloque de textos alineados a la izquierda */
+}
+
+.footer-fila {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-icono {
+    width: 1.5rem; /* Tamaño proporcional a los iconos */
+    height: auto;
+    object-fit: contain;
+}
+
+.footer-fila p {
+    color: rgba(255, 255, 255, 0.5); /* Blanco con 50% de opacidad */
+    font-family: "Obliqua Sans", sans-serif;
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin: 0;
+    text-align: left;
+}
+
+.footer-linea {
+    width: 100%;
+    max-width: 55em;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.5); /* Línea blanca al 50% */
+    margin: 3.5rem 0;
+}
+
+.footer-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    width: 100%;
+}
+
+.footer-logo {
+    height: 4rem; /* Tamaño proporcional de los logotipos */
+    width: auto;
+    object-fit: contain;
 }
 
 body > *:not(#visualizador):not(script) {
